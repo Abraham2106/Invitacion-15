@@ -29,7 +29,8 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:dark}
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 body{
   margin:0;
   font-family:var(--serif);
@@ -98,7 +99,7 @@ body{
   animation:fadeUp 1s .2s ease both;
 }
 .cover__name{
-  font-family:var(--script);color:var(--cream);
+  font-family:var(--script);color:var(--cream);font-weight:400;
   font-size:60px;line-height:.9;margin:2px 0 26px;
   animation:fadeUp 1s .35s ease both;
 }
@@ -221,7 +222,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 }
 .title__name{
   font-family:var(--script);font-size:80px;line-height:.86;margin:2px 0;
-  color:var(--gold);
+  color:var(--gold);font-weight:400;
 }
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .title__name{
@@ -256,20 +257,20 @@ body.premium .reveal, body.premium .cover{transition:none}
 .music__label{font-family:var(--caps);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .music__song{font-size:17px;color:var(--cream);margin-top:2px;font-style:italic}
 .music__bar{height:3px;border-radius:3px;background:rgba(230,240,233,.18);margin-top:9px;overflow:hidden}
-.music__prog{height:100%;width:0;background:var(--gold);transition:width .25s linear}
+.music__prog{height:100%;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .25s linear}
 .eq{display:flex;align-items:flex-end;gap:2px;height:16px}
-.eq span{width:3px;background:var(--gold-soft);height:4px;border-radius:2px}
+.eq span{width:3px;background:var(--gold-soft);height:16px;border-radius:2px;transform:scaleY(.25);transform-origin:50% 100%}
 .music.playing .eq span{animation:eq .9s ease-in-out infinite}
 .music.playing .eq span:nth-child(2){animation-delay:.15s}
 .music.playing .eq span:nth-child(3){animation-delay:.3s}
 .music.playing .eq span:nth-child(4){animation-delay:.45s}
-@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(.94)}}
 
 /* fecha + mensaje */
 .date-line{text-align:center;font-family:var(--caps);letter-spacing:.28em;text-transform:uppercase;font-size:15px;color:var(--cream)}
 .message{
   text-align:center;font-size:20px;line-height:1.6;color:var(--mint);
-  max-width:32ch;margin:14px auto 0;font-style:italic;
+  max-width:32ch;margin:14px auto 0;font-style:italic;text-wrap:pretty;
 }
 
 /* cuenta regresiva */
@@ -294,7 +295,7 @@ body.premium .reveal, body.premium .cover{transition:none}
   width:118%;max-width:none;opacity:.35;color:var(--emerald-deep);z-index:0;pointer-events:none;
 }
 .accompany > *{position:relative;z-index:1}
-.accompany__label{font-family:var(--caps);letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.accompany__label{font-family:var(--caps);letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:500}
 .accompany__group{margin-top:18px}
 .accompany__role{font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;font-size:11px;color:var(--mint);opacity:.75}
 .accompany__ppl{font-size:20px;color:var(--cream);margin:3px 0 0;font-style:italic}
@@ -305,8 +306,8 @@ body.premium .reveal, body.premium .cover{transition:none}
 .event__icon svg{width:52px;height:52px}
 .event__icon--soft{color:var(--emerald-deep)}
 .event__kind{margin-top:8px}
-.event__kind.caps{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:16px;color:var(--cream)}
-.event__kind.script{font-family:var(--script);font-size:52px;color:var(--cream);line-height:.9}
+.event__kind.caps{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:16px;color:var(--cream);font-weight:500}
+.event__kind.script{font-family:var(--script);font-size:52px;color:var(--cream);line-height:.9;font-weight:400}
 .event__time{font-size:40px;color:var(--cream);font-weight:500;line-height:1}
 .event__time--note{font-size:21px;font-style:italic;font-weight:400}
 .event__place{font-size:19px;color:var(--mint);max-width:28ch;margin:0 auto;font-style:italic}
@@ -331,18 +332,18 @@ body.premium .reveal, body.premium .cover{transition:none}
 
 /* código de vestimenta */
 .dress{text-align:center}
-.dress__label{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.dress__label{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:500}
 .dress__figs{display:flex;justify-content:center;align-items:flex-end;gap:34px;margin:18px 0 8px;color:var(--cream)}
 .dress__fig{display:flex;flex-direction:column;align-items:center;gap:6px}
 .dress__fig .hat{width:52px;height:34px;color:var(--gold)}
 .dress__fig .body{width:44px;height:96px}
 .dress__code{font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;font-size:20px;color:var(--cream);margin-top:10px}
-.dress__note{font-size:19px;font-style:italic;color:var(--mint);margin-top:10px;line-height:1.5}
+.dress__note{font-size:19px;font-style:italic;color:var(--mint);margin-top:10px;line-height:1.5;text-wrap:pretty}
 .dress__note b{color:var(--gold);font-style:normal}
 
 /* rsvp */
 .rsvp{text-align:center;padding:48px 30px 60px}
-.rsvp__hi{font-family:var(--script);font-size:48px;color:var(--gold);line-height:1}
+.rsvp__hi{font-family:var(--script);font-size:48px;color:var(--gold);line-height:1;font-weight:400}
 .rsvp__sub{font-size:18px;color:var(--mint);max-width:30ch;margin:8px auto 0;font-style:italic}
 
 .foot{padding:0 30px 44px;text-align:center}
@@ -418,7 +419,7 @@ body.premium .reveal, body.premium .cover{transition:none}
     <span class="spark" style="top:80%;left:78%;animation-delay:2.5s" aria-hidden="true"></span>
 
     <p class="cover__kicker">Están cordialmente invitados a</p>
-    <div class="cover__name">Mis Quince Años</div>
+    <h1 class="cover__name">Mis Quince Años</h1>
 
     <button class="envelope" id="openBtn" aria-label="Abrir la invitación">
       <span class="env" aria-hidden="true">
@@ -447,7 +448,7 @@ body.premium .reveal, body.premium .cover{transition:none}
     <section class="section title reveal" style="padding-top:64px">
       <p class="title__kicker">Mis Quince Años</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <div class="title__name">Isabella</div>
+      <h2 class="title__name">Isabella</h2>
       <p class="title__last">Chaves Cordero</p>
     </section>
 
@@ -458,11 +459,11 @@ body.premium .reveal, body.premium .cover{transition:none}
       </button>
       <div class="music__meta">
         <div class="music__label">Reproduce mi canción favorita</div>
-        <div class="music__song" id="songName">Superestrella — Aitana</div>
+        <div class="music__song" id="songName" translate="no">Superestrella — Aitana</div>
         <div class="music__bar"><div class="music__prog" id="prog"></div></div>
       </div>
       <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <audio id="audio" src="assets/superestrella.mp3" preload="auto"></audio>
+      <audio id="audio" src="assets/superestrella.mp3" preload="metadata"></audio>
     </div>
 
     <!-- fecha + mensaje + cuenta regresiva -->
@@ -487,7 +488,7 @@ body.premium .reveal, body.premium .cover{transition:none}
     <section class="accompany reveal">
       <svg class="horse" viewBox="0 0 353 304" aria-hidden="true"><use href="#ic-horse"/></svg>
 
-      <p class="accompany__label">Con la bendición de</p>
+      <h3 class="accompany__label">Con la bendición de</h3>
       <div class="accompany__group">
         <p class="accompany__role">Mis Padres</p>
         <p class="accompany__ppl">Andrey Chaves Porras &amp; Johana Cordero Méndez</p>
@@ -497,9 +498,9 @@ body.premium .reveal, body.premium .cover{transition:none}
     <!-- ceremonia -->
     <section class="section event reveal">
       <div class="event__icon" aria-hidden="true"><svg><use href="#ic-chapel"/></svg></div>
-      <p class="event__kind caps">Ceremonia</p>
+      <h3 class="event__kind caps">Ceremonia</h3>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__time">4:00 p.m.</p>
+      <p class="event__time">4:00&nbsp;p.m.</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
       <p class="event__place">Iglesia San Salvador</p>
       <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Iglesia+San+Salvador" target="_blank" rel="noopener">
@@ -510,7 +511,7 @@ body.premium .reveal, body.premium .cover{transition:none}
     <!-- recepción -->
     <section class="section event reveal">
       <div class="event__icon event__icon--soft" aria-hidden="true"><svg><use href="#ic-cheers"/></svg></div>
-      <p class="event__kind script">Recepción</p>
+      <h3 class="event__kind script">Recepción</h3>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
       <p class="event__place">Salón Comunal San Salvador</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
@@ -522,7 +523,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 
     <!-- código de vestimenta -->
     <section class="section dress reveal">
-      <p class="dress__label">Código de vestimenta</p>
+      <h3 class="dress__label">Código de vestimenta</h3>
       <div class="dress__figs" aria-hidden="true">
         <div class="dress__fig">
           <svg class="hat" viewBox="0 0 64 40"><use href="#ic-cowboy-hat"/></svg>
@@ -539,7 +540,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 
     <!-- rsvp -->
     <section class="rsvp reveal">
-      <p class="rsvp__hi">¿Nos acompañas?</p>
+      <h3 class="rsvp__hi">¿Nos acompañas?</h3>
       <p class="rsvp__sub">Tu presencia es el mejor regalo. Confírmanos antes del 23 de agosto.</p>
       <a class="btn btn--big" href="https://wa.me/NUMERO_PENDIENTE?text=Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Isabella" target="_blank" rel="noopener">
         Confirmar asistencia
@@ -679,8 +680,8 @@ function setCell(el, val){
   el.textContent = val;
   if(reducedMotion) return;
   el.classList.remove('tick');
-  void el.offsetWidth;                     // reinicia la animación
-  el.classList.add('tick');
+  // reinicia la animación sin forzar reflow síncrono
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('tick')));
 }
 function tick(){
   const diff = target - Date.now();
@@ -724,10 +725,10 @@ playBtn.addEventListener('click', () => {
   }
 });
 audio.addEventListener('timeupdate', () => {
-  if(audio.duration) prog.style.width = (audio.currentTime/audio.duration*100)+'%';
+  if(audio.duration) prog.style.transform = 'scaleX(' + (audio.currentTime/audio.duration) + ')';
 });
 audio.addEventListener('ended', () => {
-  player.classList.remove('playing'); setIcon('play'); prog.style.width='0';
+  player.classList.remove('playing'); setIcon('play'); prog.style.transform = 'scaleX(0)';
   startedOnce = false;                   // el próximo play vuelve a empezar en el coro
 });
 </script>
