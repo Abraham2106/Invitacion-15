@@ -122,6 +122,9 @@ body{
 }
 .envelope:focus-visible{outline:2px solid var(--gold);outline-offset:8px;border-radius:10px}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* al abrir: quieto y sin lift de hover, para que la secuencia no tiemble */
+.envelope.open{animation:none;pointer-events:none}
+.envelope.open .env, .envelope.open:hover .env{transform:none}
 
 .env{
   position:relative;display:block;width:184px;height:128px;
@@ -135,7 +138,8 @@ body{
   position:absolute;left:14px;right:14px;top:10px;height:88px;
   background:var(--cream);border:1px solid var(--gold-dim);border-radius:3px;
   z-index:1;transform:translateY(14px);
-  transition:transform .8s .35s cubic-bezier(.2,.8,.2,1);
+  transition:transform .8s .4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 -6px 18px rgba(0,0,0,.18);
 }
 .env__card::before{ /* diamante dorado de la tarjeta */
   content:"";position:absolute;top:14px;left:50%;width:8px;height:8px;
@@ -145,7 +149,7 @@ body{
   content:"";position:absolute;left:26px;right:26px;top:34px;height:34px;
   background:repeating-linear-gradient(180deg,rgba(15,61,52,.28) 0 1.5px,transparent 1.5px 10px);
 }
-.open .env__card{transform:translateY(-58px)}
+.open .env__card{transform:translateY(-78px)}
 
 .env__body{
   position:absolute;inset:0;z-index:2;
@@ -159,9 +163,10 @@ body{
   clip-path:polygon(0 0,100% 0,50% 100%);
   background:linear-gradient(180deg,#F2EEE3,#E7E0CE);
   transform-origin:50% 0;
-  transition:transform .75s cubic-bezier(.6,.05,.3,1), z-index 0s .5s;
+  /* al pasar la vertical (~.32s) la solapa cede el frente a la tarjeta */
+  transition:transform .75s cubic-bezier(.6,.05,.3,1), z-index 0s .32s;
 }
-.open .env__flap{transform:rotateX(-178deg);z-index:1}
+.open .env__flap{transform:rotateX(-178deg);z-index:0}
 
 .env__seal{
   position:absolute;top:46px;left:50%;transform:translateX(-50%);
