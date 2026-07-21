@@ -25,7 +25,7 @@
   --serif:'Cormorant Garamond', Georgia, serif;
   --caps:'Cinzel', serif;
 
-  --strip:432px;
+  --strip:max(432px, 33.33vw);
 }
 
 *{box-sizing:border-box}
@@ -195,7 +195,6 @@ body{
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
 .section{padding:46px 30px}
-.section--tight{padding:28px 30px}
 
 /* reveal al hacer scroll */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s cubic-bezier(.16,.84,.28,1)}
@@ -207,8 +206,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 .vdiv{display:flex;flex-direction:column;align-items:center;gap:8px;margin:14px 0}
 .vdiv .ln{width:1px;height:26px;background:linear-gradient(var(--gold),var(--gold-faint))}
 .vdiv .ln.rev{background:linear-gradient(var(--gold-faint),var(--gold))}
-.vdiv .gem{width:9px;height:9px;background:var(--gold);transform:rotate(45deg);animation:gemGlow 3.4s ease-in-out infinite}
-@keyframes gemGlow{0%,100%{box-shadow:0 0 0 rgba(200,169,106,0)}50%{box-shadow:0 0 12px rgba(200,169,106,.85)}}
+.vdiv .gem{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
 
 /* bloque de título */
 .title{text-align:center}
@@ -270,6 +268,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 }
 
 /* cuenta regresiva */
+.count-wrap{margin-top:34px}
 .count__lead{text-align:center;font-family:var(--script);font-size:44px;color:var(--gold);line-height:1}
 .count{display:flex;justify-content:center;gap:10px;margin-top:14px}
 .count .box{
@@ -277,7 +276,7 @@ body.premium .reveal, body.premium .cover{transition:none}
   border-radius:10px;padding:12px 6px;text-align:center;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
-.count .num{font-size:32px;color:var(--cream);line-height:1;font-weight:500}
+.count .num{font-size:32px;color:var(--cream);line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
 .count .num.tick{animation:pop .35s ease}
 @keyframes pop{40%{transform:scale(1.18);color:var(--gold-soft)}}
 .count .lab{font-family:var(--caps);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:6px}
@@ -306,7 +305,6 @@ body.premium .reveal, body.premium .cover{transition:none}
 .event__time{font-size:40px;color:var(--cream);font-weight:500;line-height:1}
 .event__time--note{font-size:21px;font-style:italic;font-weight:400}
 .event__place{font-size:19px;color:var(--mint);max-width:28ch;margin:0 auto;font-style:italic}
-.event__addr{font-size:14px;color:var(--gold);letter-spacing:.04em;margin-top:4px}
 
 .btn{
   display:inline-flex;align-items:center;gap:8px;cursor:pointer;
@@ -320,13 +318,11 @@ body.premium .reveal, body.premium .cover{transition:none}
 .btn svg{width:15px;height:15px}
 .btn--big{
   font-size:13px;padding:16px 36px;color:var(--emerald-dark);
-  background:linear-gradient(110deg,#B3945B,#E4CD9B 40%,#C8A96A 55%,#EAD9AC 78%,#B3945B);
-  background-size:220% 100%;border:0;
-  animation:sheen 5.5s linear infinite;
+  background:linear-gradient(110deg,#B3945B,#E4CD9B 45%,#C8A96A 70%);
+  border:0;
   box-shadow:0 10px 26px rgba(0,0,0,.35);
 }
 .btn--big:hover{color:var(--emerald-dark);transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.42)}
-@keyframes sheen{from{background-position:0% 0}to{background-position:220% 0}}
 
 /* código de vestimenta */
 .dress{text-align:center}
@@ -338,23 +334,6 @@ body.premium .reveal, body.premium .cover{transition:none}
 .dress__code{font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;font-size:20px;color:var(--cream);margin-top:10px}
 .dress__note{font-size:19px;font-style:italic;color:var(--mint);margin-top:10px;line-height:1.5}
 .dress__note b{color:var(--gold);font-style:normal}
-
-/* itinerario con corazones */
-.timeline{position:relative;max-width:290px;margin:22px auto 0;padding-left:34px;text-align:left}
-.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(var(--gold),var(--gold-faint))}
-.tl-item{position:relative;padding:0 0 24px}
-.tl-item:last-child{padding-bottom:0}
-.tl-item .heart{
-  position:absolute;left:-34px;top:0;width:20px;height:20px;color:var(--gold);
-  animation:beat 2s ease-in-out infinite;transform-origin:center;
-}
-.tl-item:nth-child(2) .heart{animation-delay:.3s}
-.tl-item:nth-child(3) .heart{animation-delay:.6s}
-.tl-item:nth-child(4) .heart{animation-delay:.9s}
-.tl-item:nth-child(5) .heart{animation-delay:1.2s}
-@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.22)}24%{transform:scale(1)}}
-.tl-item .t{font-family:var(--caps);font-size:12px;letter-spacing:.12em;color:var(--cream)}
-.tl-item .a{font-size:18px;color:var(--mint);font-style:italic;line-height:1.3}
 
 /* rsvp */
 .rsvp{text-align:center;padding:48px 30px 60px}
@@ -372,6 +351,11 @@ body.premium .reveal, body.premium .cover{transition:none}
   .title__name{font-size:66px}
   .count .box{min-width:56px}
 }
+@media (min-width:900px){
+  .section{padding-left:48px;padding-right:48px}
+  .music{margin-left:48px;margin-right:48px}
+  .rsvp{padding-left:48px;padding-right:48px}
+}
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important;scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
@@ -385,7 +369,6 @@ body.premium .reveal, body.premium .cover{transition:none}
   <symbol id="ic-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></symbol>
   <symbol id="ic-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z"/></symbol>
   <symbol id="ic-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c-4.4 0-8 3.4-8 7.6 0 5.4 8 12.4 8 12.4s8-7 8-12.4C20 5.4 16.4 2 12 2Zm0 10.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8Z"/></symbol>
-  <symbol id="ic-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-8-5.3-10.2-10C.3 7.6 2 4.5 5.2 4.5c2 0 3.4 1.1 4.3 2.6.4.6.6.9.5.9s.1-.3.5-.9C11.4 5.6 12.8 4.5 14.8 4.5 18 4.5 19.7 7.6 22.2 11 20 15.7 12 21 12 21Z"/></symbol>
   <!-- capilla (ventana en esmeralda) -->
   <symbol id="ic-chapel" viewBox="0 0 64 64"><g fill="currentColor"><path d="M32 4l3 4v4h3v4l-3 2v3l7 4v33H22V25l7-4v-3l-3-2V12h3V8z"/><rect x="30" y="34" width="4" height="12" fill="#134E43"/><path d="M14 30l8-5v33h-8zM50 30l-8-5v33h8z"/></g></symbol>
   <!-- copas brindando -->
@@ -470,31 +453,29 @@ body.premium .reveal, body.premium .cover{transition:none}
       </button>
       <div class="music__meta">
         <div class="music__label">Reproduce mi canción favorita</div>
-        <div class="music__song" id="songName">Título de la canción — Artista</div>
+        <div class="music__song" id="songName">Superestrellas — Aitana</div>
         <div class="music__bar"><div class="music__prog" id="prog"></div></div>
       </div>
       <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <!-- coloca aquí el MP3: <audio id="audio" src="cancion.mp3" preload="auto"></audio> -->
+      <!-- al tener el MP3 de "Superestrellas": <audio id="audio" src="superestrellas.mp3" preload="auto"></audio> -->
       <audio id="audio" preload="auto"></audio>
     </div>
 
-    <!-- fecha + mensaje -->
+    <!-- fecha + mensaje + cuenta regresiva -->
     <section class="section reveal">
       <p class="date-line">Sábado · 5 de Septiembre · 2026</p>
       <p class="message">Hay momentos que se sueñan y otros que se celebran. Este es uno de esos, y quiero vivirlo contigo.</p>
-    </section>
-
-    <!-- cuenta regresiva -->
-    <section class="section reveal">
-      <p class="count__lead">Faltan</p>
-      <div class="count" id="count" role="timer" aria-label="Cuenta regresiva">
-        <div class="box"><div class="num" id="cd-d">00</div><div class="lab">Días</div></div>
-        <span class="sep">:</span>
-        <div class="box"><div class="num" id="cd-h">00</div><div class="lab">Horas</div></div>
-        <span class="sep">:</span>
-        <div class="box"><div class="num" id="cd-m">00</div><div class="lab">Min</div></div>
-        <span class="sep">:</span>
-        <div class="box"><div class="num" id="cd-s">00</div><div class="lab">Seg</div></div>
+      <div class="count-wrap">
+        <p class="count__lead">Faltan</p>
+        <div class="count" id="count" role="timer" aria-label="Cuenta regresiva">
+          <div class="box"><div class="num" id="cd-d">00</div><div class="lab">Días</div></div>
+          <span class="sep">:</span>
+          <div class="box"><div class="num" id="cd-h">00</div><div class="lab">Horas</div></div>
+          <span class="sep">:</span>
+          <div class="box"><div class="num" id="cd-m">00</div><div class="lab">Min</div></div>
+          <span class="sep">:</span>
+          <div class="box"><div class="num" id="cd-s">00</div><div class="lab">Seg</div></div>
+        </div>
       </div>
     </section>
 
@@ -516,9 +497,8 @@ body.premium .reveal, body.premium .cover{transition:none}
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
       <p class="event__time">4:00 p.m.</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__place">Nombre de la parroquia · pendiente</p>
-      <p class="event__addr">Dirección · pendiente</p>
-      <a class="btn" href="https://maps.google.com" target="_blank" rel="noopener">
+      <p class="event__place">Iglesia San Salvador</p>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Iglesia+San+Salvador" target="_blank" rel="noopener">
         <svg><use href="#ic-pin"/></svg> Ver mapa
       </a>
     </section>
@@ -528,11 +508,10 @@ body.premium .reveal, body.premium .cover{transition:none}
       <div class="event__icon event__icon--soft" aria-hidden="true"><svg><use href="#ic-cheers"/></svg></div>
       <p class="event__kind script">Recepción</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__place">Nombre del salón · pendiente</p>
-      <p class="event__addr">Dirección · pendiente</p>
+      <p class="event__place">Salón Comunal San Salvador</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
       <p class="event__time event__time--note">Enseguida, al finalizar la misa</p>
-      <a class="btn" href="https://maps.google.com" target="_blank" rel="noopener">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Sal%C3%B3n+Comunal+San+Salvador" target="_blank" rel="noopener">
         <svg><use href="#ic-pin"/></svg> Ver mapa
       </a>
     </section>
@@ -552,19 +531,6 @@ body.premium .reveal, body.premium .cover{transition:none}
       </div>
       <p class="dress__code">Look Vaquero</p>
       <p class="dress__note">Te pedimos con cariño <b>evitar el verde esmeralda</b>, reservado para la quinceañera.</p>
-    </section>
-
-    <!-- itinerario -->
-    <section class="section reveal">
-      <p class="title__kicker" style="text-align:center">Itinerario</p>
-      <div class="vdiv" aria-hidden="true" style="margin-left:auto;margin-right:auto"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <div class="timeline">
-        <div class="tl-item"><svg class="heart"><use href="#ic-heart"/></svg><div class="t">4:00 p.m.</div><div class="a">Ceremonia religiosa</div></div>
-        <div class="tl-item"><svg class="heart"><use href="#ic-heart"/></svg><div class="t">Enseguida</div><div class="a">Recepción y bienvenida</div></div>
-        <div class="tl-item"><svg class="heart"><use href="#ic-heart"/></svg><div class="t">6:00 p.m.</div><div class="a">Vals y presentación</div></div>
-        <div class="tl-item"><svg class="heart"><use href="#ic-heart"/></svg><div class="t">7:00 p.m.</div><div class="a">Cena</div></div>
-        <div class="tl-item"><svg class="heart"><use href="#ic-heart"/></svg><div class="t">8:00 p.m.</div><div class="a">Baile y fiesta</div></div>
-      </div>
     </section>
 
     <!-- rsvp -->
@@ -681,7 +647,6 @@ function gsapReveals(){
       scrollTrigger:{trigger:els[0].parentElement, start:'top 85%', once:true}});
   };
   stagger('.count .box', .09);
-  stagger('.tl-item', .13);
   stagger('.accompany__group', .16);
   stagger('.dress__figs svg', .18);
   // entrada dramática del nombre
