@@ -1,0 +1,14 @@
+{
+  "name": "invitacion-quince",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Invitación interactiva de quince años — franja central, paleta esmeralda/dorado",
+  "scripts": {
+    "vendor": "node scripts/copy-vendor.mjs"
+  },
+  "dependencies": {
+    "canvas-confetti": "1.9.4",
+    "gsap": "3.15.0",
+    "lenis": "1.3.25"
+  }
+}
