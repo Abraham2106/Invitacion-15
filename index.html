@@ -453,12 +453,11 @@ body.premium .reveal, body.premium .cover{transition:none}
       </button>
       <div class="music__meta">
         <div class="music__label">Reproduce mi canción favorita</div>
-        <div class="music__song" id="songName">Superestrellas — Aitana</div>
+        <div class="music__song" id="songName">Superestrella — Aitana</div>
         <div class="music__bar"><div class="music__prog" id="prog"></div></div>
       </div>
       <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <!-- al tener el MP3 de "Superestrellas": <audio id="audio" src="superestrellas.mp3" preload="auto"></audio> -->
-      <audio id="audio" preload="auto"></audio>
+      <audio id="audio" src="assets/superestrella.mp3" preload="auto"></audio>
     </div>
 
     <!-- fecha + mensaje + cuenta regresiva -->
@@ -695,27 +694,37 @@ const player = document.getElementById('player');
 const prog = document.getElementById('prog');
 
 function setIcon(name){ playIcon.innerHTML = '<use href="#ic-'+name+'"/>'; }
-let fakeT = 0, fakeTimer = null;
+
+// La reproducción arranca en el coro (el momento más reconocible, ~0:55 según Shazam)
+const CHORUS_START = 52;
+let startedOnce = false;
+
+function playFromChorus(){
+  const seekAndPlay = () => { audio.currentTime = CHORUS_START; audio.play().catch(()=>{}); };
+  if(audio.readyState >= 1){ seekAndPlay(); }
+  else { audio.addEventListener('loadedmetadata', seekAndPlay, {once:true}); audio.load(); }
+  startedOnce = true;
+}
 
 playBtn.addEventListener('click', () => {
-  const hasSrc = audio.currentSrc || audio.getAttribute('src');
   if(player.classList.contains('playing')){
     player.classList.remove('playing'); setIcon('play');
-    if(hasSrc) audio.pause(); else clearInterval(fakeTimer);
+    audio.pause();
     playBtn.setAttribute('aria-label','Reproducir canción');
   } else {
     player.classList.add('playing'); setIcon('pause');
     playBtn.setAttribute('aria-label','Pausar canción');
-    if(hasSrc){ audio.play().catch(()=>{}); }
-    else { // sin MP3 aún: anima la barra como vista previa
-      fakeTimer = setInterval(()=>{ fakeT = (fakeT+0.4)%100; prog.style.width = fakeT+'%'; }, 250);
-    }
+    if(startedOnce){ audio.play().catch(()=>{}); }
+    else { playFromChorus(); }
   }
 });
 audio.addEventListener('timeupdate', () => {
   if(audio.duration) prog.style.width = (audio.currentTime/audio.duration*100)+'%';
 });
-audio.addEventListener('ended', () => { player.classList.remove('playing'); setIcon('play'); prog.style.width='0'; });
+audio.addEventListener('ended', () => {
+  player.classList.remove('playing'); setIcon('play'); prog.style.width='0';
+  startedOnce = false;                   // el próximo play vuelve a empezar en el coro
+});
 </script>
 </body>
 </html>
