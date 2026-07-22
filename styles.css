@@ -971,6 +971,23 @@ a {
     padding-top: 82px;
   }
 
+  .hero__name {
+    max-width: none;
+    padding-left: 3px;
+    font-size: clamp(74px, 23.5vw, 96px);
+    letter-spacing: -.075em;
+    line-height: .8;
+    white-space: nowrap;
+  }
+
+  .hero__name span {
+    display: inline;
+  }
+
+  .hero__name span:last-child {
+    margin-left: 0;
+  }
+
   .hero__date {
     top: 350px;
   }
@@ -982,6 +999,54 @@ a {
 
   .intro h2 {
     font-size: 50px;
+  }
+
+  .itinerary h2 {
+    font-size: clamp(46px, 14.5vw, 56px);
+    line-height: .96;
+  }
+
+  .itinerary h2 br {
+    display: none;
+  }
+
+  .itinerary__header > p:last-child {
+    margin-top: 24px;
+  }
+
+  .event {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 16px;
+    padding-bottom: 72px;
+  }
+
+  .event__index {
+    width: 46px;
+    height: 46px;
+    font-size: 17px;
+  }
+
+  .timeline::before {
+    left: 23px;
+  }
+
+  .event__time,
+  .event__details {
+    grid-column: 2;
+  }
+
+  .event__details h3 {
+    font-size: 30px;
+  }
+
+  .event__details p {
+    margin-top: 10px;
+  }
+
+  .text-link {
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: .065em;
   }
 
   .intro__copy > p:last-child,
