@@ -1,726 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0F3D34">
-<title>Mis Quince Años · Isabella Chaves Cordero</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vendor/lenis.css">
-<style>
-:root{
-  --emerald-dark:#0F3D34;
-  --emerald:#134E43;
-  --emerald-deep:#0A2B24;
-  --mint:#E6F0E9;
-  --cream:#F7F6F1;
-  --gold:#C8A96A;
-  --gold-soft:#DCC08C;
-  --gold-dim:rgba(200,169,106,.32);
-  --gold-faint:rgba(200,169,106,.16);
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="description" content="Invitación a los quince años de Isabella Chaves Cordero, el 5 de septiembre de 2026.">
+  <meta property="og:title" content="Mis quince años · Isabella">
+  <meta property="og:description" content="Sábado 5 de septiembre de 2026. Acompáñame a celebrar una noche inolvidable.">
+  <meta property="og:type" content="website">
+  <title>Mis quince años · Isabella Chaves Cordero</title>
 
-  --script:'Alex Brush', cursive;
-  --serif:'Cormorant Garamond', Georgia, serif;
-  --caps:'Cinzel', serif;
-
-  --strip:max(432px, 33.33vw);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:dark}
-button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-body{
-  margin:0;
-  font-family:var(--serif);
-  color:var(--mint);
-  background:
-    radial-gradient(1200px 640px at 50% -10%, #14483D, transparent 60%),
-    radial-gradient(900px 700px at 50% 115%, #0C332B, transparent 65%),
-    linear-gradient(180deg,#0F3D34,#0A2B24);
-  background-attachment:fixed;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* ---------- franja central angosta ---------- */
-.strip{
-  max-width:var(--strip);
-  margin:0 auto;
-  background:var(--emerald);
-  min-height:100vh;
-  box-shadow:0 0 80px rgba(0,0,0,.5);
-  border-left:1px solid var(--gold-dim);
-  border-right:1px solid var(--gold-dim);
-  position:relative;
-  overflow:hidden;
-}
-.strip::before{ /* matices sutiles del papel */
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(420px 320px at 88% 6%, rgba(230,240,233,.05), transparent 60%),
-    radial-gradient(380px 340px at 6% 68%, rgba(200,169,106,.06), transparent 60%),
-    radial-gradient(520px 420px at 55% 108%, rgba(10,43,36,.5), transparent 65%);
-}
-.strip > *{position:relative;z-index:1}
-
-/* ========== PÁGINA 1 · PORTADA ========== */
-.cover{
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:64px 0 46px;
-  text-align:center;
-  transition:opacity .7s ease, transform .7s ease;
-  position:relative;
-}
-.cover--out{opacity:0;transform:translateY(-26px);pointer-events:none}
-
-/* marca de agua ecuestre detrás del monograma */
-.cover .horse{
-  position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);
-  width:150%;max-width:none;opacity:.12;color:var(--gold);z-index:0;pointer-events:none;
-}
-
-.monogram{
-  position:relative;z-index:1;
-  width:148px;height:148px;border-radius:50%;
-  border:1.5px solid var(--gold);
-  display:grid;place-items:center;
-  animation:fadeUp 1s .05s ease both;
-  box-shadow:0 0 0 5px var(--emerald), 0 0 0 6.5px var(--gold-dim);
-}
-.monogram__txt{font-family:var(--script);font-size:56px;color:var(--gold);line-height:1;padding-left:.1em}
-.cover .ic-horseshoe{width:26px;height:26px;color:var(--gold);margin-top:16px;animation:fadeUp 1s .15s ease both}
-
-.cover__kicker{
-  font-family:var(--caps);letter-spacing:.42em;text-transform:uppercase;
-  font-size:12px;color:var(--gold);margin:26px 0 4px;padding-left:.42em;
-  animation:fadeUp 1s .2s ease both;
-}
-.cover__name{
-  font-family:var(--script);color:var(--cream);font-weight:400;
-  font-size:60px;line-height:.9;margin:2px 0 26px;
-  animation:fadeUp 1s .35s ease both;
-}
-
-/* destellos dorados */
-.spark{
-  position:absolute;width:6px;height:6px;background:var(--gold);
-  transform:rotate(45deg);opacity:0;pointer-events:none;
-  animation:twinkle 3.6s ease-in-out infinite;
-}
-@keyframes twinkle{
-  0%,100%{opacity:0;transform:rotate(45deg) scale(.4)}
-  50%{opacity:.9;transform:rotate(45deg) scale(1)}
-}
-
-/* ---- sobre con sello de lacre ---- */
-.envelope{
-  background:none;border:0;cursor:pointer;padding:10px;
-  display:block;
-  animation:fadeUp 1s .5s ease both, floaty 4.5s 1.5s ease-in-out infinite;
-}
-.envelope:focus-visible{outline:2px solid var(--gold);outline-offset:8px;border-radius:10px}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-/* al abrir: quieto y sin lift de hover, para que la secuencia no tiemble */
-.envelope.open{animation:none;pointer-events:none}
-.envelope.open .env, .envelope.open:hover .env{transform:none}
-
-.env{
-  position:relative;display:block;width:184px;height:128px;
-  perspective:800px;
-  filter:drop-shadow(0 20px 28px rgba(0,0,0,.4));
-  transition:transform .5s cubic-bezier(.2,.8,.2,1), filter .5s;
-}
-.envelope:hover .env{transform:translateY(-4px) scale(1.03);filter:drop-shadow(0 24px 34px rgba(0,0,0,.45)) drop-shadow(0 0 18px rgba(200,169,106,.35))}
-
-.env__card{
-  position:absolute;left:14px;right:14px;top:10px;height:88px;
-  background:var(--cream);border:1px solid var(--gold-dim);border-radius:3px;
-  z-index:1;transform:translateY(14px);
-  transition:transform .8s .4s cubic-bezier(.2,.8,.2,1);
-  box-shadow:0 -6px 18px rgba(0,0,0,.18);
-}
-.env__card::before{ /* diamante dorado de la tarjeta */
-  content:"";position:absolute;top:14px;left:50%;width:8px;height:8px;
-  background:var(--gold);transform:translateX(-50%) rotate(45deg);
-}
-.env__card::after{ /* líneas de "texto" */
-  content:"";position:absolute;left:26px;right:26px;top:34px;height:34px;
-  background:repeating-linear-gradient(180deg,rgba(15,61,52,.28) 0 1.5px,transparent 1.5px 10px);
-}
-.open .env__card{transform:translateY(-78px)}
-
-.env__body{
-  position:absolute;inset:0;z-index:2;
-  background:var(--cream);border:1.5px solid var(--gold);border-radius:7px;
-  overflow:hidden;
-}
-.env__body svg{position:absolute;inset:0;width:100%;height:100%}
-
-.env__flap{
-  position:absolute;top:1px;left:1px;right:1px;height:66px;z-index:3;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  background:linear-gradient(180deg,#F2EEE3,#E7E0CE);
-  transform-origin:50% 0;
-  /* al pasar la vertical (~.32s) la solapa cede el frente a la tarjeta */
-  transition:transform .75s cubic-bezier(.6,.05,.3,1), z-index 0s .32s;
-}
-.open .env__flap{transform:rotateX(-178deg);z-index:0}
-
-.env__seal{
-  position:absolute;top:46px;left:50%;transform:translateX(-50%);
-  width:42px;height:42px;border-radius:50%;z-index:4;
-  background:radial-gradient(circle at 35% 30%, #DCC08C, #C8A96A 55%, #9E8149);
-  box-shadow:inset 0 -2px 5px rgba(0,0,0,.28), inset 0 2px 4px rgba(255,255,255,.35), 0 3px 8px rgba(0,0,0,.3);
-  display:grid;place-items:center;
-  font-family:var(--script);font-size:24px;color:var(--emerald-dark);
-  transition:transform .45s ease, opacity .35s ease;
-}
-.open .env__seal{transform:translate(-50%,12px) scale(.5) rotate(-14deg);opacity:0}
-
-/* flecha de círculos */
-.arrow-dots{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:24px;animation:fadeUp 1s .65s ease both}
-.arrow-dots .chev{width:16px;height:16px;border-left:2px solid var(--gold);border-top:2px solid var(--gold);transform:rotate(45deg)}
-.arrow-dots i{display:block;border-radius:50%;background:var(--gold-soft);animation:dotPulse 1.8s ease-in-out infinite}
-.arrow-dots i:nth-child(2){width:5px;height:5px;animation-delay:.45s}
-.arrow-dots i:nth-child(3){width:6px;height:6px;animation-delay:.3s}
-.arrow-dots i:nth-child(4){width:7px;height:7px;animation-delay:.15s}
-.arrow-dots i:nth-child(5){width:8px;height:8px;animation-delay:0s}
-@keyframes dotPulse{0%,100%{opacity:.35}50%{opacity:1}}
-.cover__cta{
-  font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;
-  font-size:12.5px;color:var(--mint);margin-top:16px;
-  animation:fadeUp 1s .75s ease both;
-}
-
-/* ========== PÁGINA 2 · INVITACIÓN ========== */
-.invite[hidden]{display:none}
-.invite{animation:fadeUp .9s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-
-.section{padding:46px 30px}
-
-/* reveal al hacer scroll */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s cubic-bezier(.16,.84,.28,1)}
-.reveal.in{opacity:1;transform:none}
-/* en modo premium GSAP toma el control: sin transiciones CSS que compitan */
-body.premium .reveal, body.premium .cover{transition:none}
-
-/* divisor vertical: línea · diamante · línea */
-.vdiv{display:flex;flex-direction:column;align-items:center;gap:8px;margin:14px 0}
-.vdiv .ln{width:1px;height:26px;background:linear-gradient(var(--gold),var(--gold-faint))}
-.vdiv .ln.rev{background:linear-gradient(var(--gold-faint),var(--gold))}
-.vdiv .gem{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
-
-/* bloque de título */
-.title{text-align:center}
-.title__kicker{
-  font-family:var(--caps);letter-spacing:.4em;text-transform:uppercase;
-  font-size:14px;color:var(--cream);padding-left:.4em;
-}
-.title__name{
-  font-family:var(--script);font-size:80px;line-height:.86;margin:2px 0;
-  color:var(--gold);font-weight:400;
-}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .title__name{
-    background:linear-gradient(105deg,#A8894F 0%,#E9D6A6 28%,#C8A96A 50%,#F0DFB2 72%,#A8894F 100%);
-    background-size:220% 100%;
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimmer 7s linear infinite;
-  }
-}
-@keyframes shimmer{from{background-position:0% 0}to{background-position:220% 0}}
-.title__last{
-  font-family:var(--caps);letter-spacing:.4em;text-transform:uppercase;
-  font-size:14px;color:var(--cream);padding-left:.4em;
-}
-
-/* reproductor de música — impreso en la página, no un panel flotante */
-.music{
-  margin:26px auto 0;max-width:300px;padding:0 30px;
-  display:flex;align-items:center;justify-content:center;gap:12px;
-}
-.music__btn{
-  flex:0 0 auto;width:36px;height:36px;border-radius:50%;cursor:pointer;
-  background:transparent;border:1px solid var(--gold);color:var(--gold);
-  display:grid;place-items:center;
-  transition:transform .2s, background .25s, color .25s;
-}
-.music__btn:hover{transform:scale(1.06);background:var(--gold);color:var(--emerald-dark)}
-.music__btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.music__btn svg{width:13px;height:13px}
-.music__meta{flex:0 1 auto;text-align:left;min-width:0}
-.music__line{font-size:15px;line-height:1.35;font-style:italic;color:var(--mint)}
-.music__song{color:var(--gold-soft)}
-.music__bar{height:1px;background:var(--gold-dim);margin-top:6px;overflow:hidden}
-.music__prog{height:100%;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .25s linear}
-
-/* fecha + mensaje */
-.date-line{text-align:center;font-family:var(--caps);letter-spacing:.28em;text-transform:uppercase;font-size:15px;color:var(--cream)}
-.message{
-  text-align:center;font-size:20px;line-height:1.6;color:var(--mint);
-  max-width:32ch;margin:14px auto 0;font-style:italic;text-wrap:pretty;
-}
-
-/* cuenta regresiva */
-.count-wrap{margin-top:34px}
-.count__lead{text-align:center;font-family:var(--script);font-size:44px;color:var(--gold);line-height:1}
-.count{display:flex;justify-content:center;gap:10px;margin-top:14px}
-.count .box{
-  min-width:62px;background:var(--emerald-dark);border:1px solid var(--gold-dim);
-  border-radius:10px;padding:12px 6px;text-align:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
-.count .num{font-size:32px;color:var(--cream);line-height:1;font-weight:500;font-variant-numeric:tabular-nums}
-.count .num.tick{animation:pop .35s ease}
-@keyframes pop{40%{transform:scale(1.18);color:var(--gold-soft)}}
-.count .lab{font-family:var(--caps);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:6px}
-.count .sep{align-self:center;font-size:26px;color:var(--gold-dim)}
-
-/* acompañantes con caballo de fondo */
-.accompany{position:relative;text-align:center;padding:58px 30px}
-.accompany .horse{
-  position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
-  width:118%;max-width:none;opacity:.35;color:var(--emerald-deep);z-index:0;pointer-events:none;
-}
-.accompany > *{position:relative;z-index:1}
-.accompany__label{font-family:var(--caps);letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:500}
-.accompany__group{margin-top:18px}
-.accompany__role{font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;font-size:11px;color:var(--mint);opacity:.75}
-.accompany__ppl{font-size:20px;color:var(--cream);margin:3px 0 0;font-style:italic}
-
-/* eventos (ceremonia / recepción) */
-.event{text-align:center}
-.event__icon{color:var(--cream)}
-.event__icon svg{width:52px;height:52px}
-.event__icon--soft{color:var(--emerald-deep)}
-.event__kind{margin-top:8px}
-.event__kind.caps{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:16px;color:var(--cream);font-weight:500}
-.event__kind.script{font-family:var(--script);font-size:52px;color:var(--cream);line-height:.9;font-weight:400}
-.event__time{font-size:40px;color:var(--cream);font-weight:500;line-height:1}
-.event__time--note{font-size:21px;font-style:italic;font-weight:400}
-.event__place{font-size:19px;color:var(--mint);max-width:28ch;margin:0 auto;font-style:italic}
-
-.btn{
-  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-  font-family:var(--caps);letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;
-  color:var(--cream);background:var(--emerald-dark);border:1px solid var(--gold);border-radius:999px;
-  padding:12px 24px;margin-top:18px;text-decoration:none;
-  transition:background .25s,color .25s,transform .2s,box-shadow .25s;
-}
-.btn:hover{background:var(--gold);color:var(--emerald-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.btn svg{width:15px;height:15px}
-.btn--big{
-  font-size:13px;padding:16px 36px;color:var(--emerald-dark);
-  background:linear-gradient(110deg,#B3945B,#E4CD9B 45%,#C8A96A 70%);
-  border:0;
-  box-shadow:0 10px 26px rgba(0,0,0,.35);
-}
-.btn--big:hover{color:var(--emerald-dark);transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.42)}
-
-/* código de vestimenta */
-.dress{text-align:center}
-.dress__label{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:500}
-.dress__figs{display:flex;justify-content:center;align-items:flex-end;gap:34px;margin:18px 0 8px;color:var(--cream)}
-.dress__fig{display:flex;flex-direction:column;align-items:center;gap:6px}
-.dress__fig .hat{width:52px;height:34px;color:var(--gold)}
-.dress__fig .body{width:44px;height:96px}
-.dress__code{font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;font-size:20px;color:var(--cream);margin-top:10px}
-.dress__note{font-size:19px;font-style:italic;color:var(--mint);margin-top:10px;line-height:1.5;text-wrap:pretty}
-.dress__note b{color:var(--gold);font-style:normal}
-
-/* rsvp */
-.rsvp{text-align:center;padding:48px 30px 60px}
-.rsvp__hi{font-family:var(--script);font-size:48px;color:var(--gold);line-height:1;font-weight:400}
-.rsvp__sub{font-size:18px;color:var(--mint);max-width:30ch;margin:8px auto 0;font-style:italic}
-
-.foot{padding:0 30px 44px;text-align:center}
-.foot .gem-row{display:flex;align-items:center;justify-content:center;gap:10px}
-.foot .gem-row .l{height:1px;width:60px;background:var(--gold-dim)}
-.foot .gem-row .g{width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
-.foot__name{font-family:var(--script);font-size:36px;color:var(--gold);margin-top:14px}
-
-@media (max-width:460px){
-  .cover__name{font-size:52px}
-  .title__name{font-size:66px}
-  .count .box{min-width:56px}
-}
-@media (min-width:900px){
-  .section{padding-left:48px;padding-right:48px}
-  .music{margin-left:48px;margin-right:48px}
-  .rsvp{padding-left:48px;padding-right:48px}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:none !important;scroll-behavior:auto}
-  .reveal{opacity:1;transform:none}
-}
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#invitacion">Saltar a la invitación</a>
 
-<!-- íconos reutilizables -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="ic-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></symbol>
-  <symbol id="ic-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z"/></symbol>
-  <symbol id="ic-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c-4.4 0-8 3.4-8 7.6 0 5.4 8 12.4 8 12.4s8-7 8-12.4C20 5.4 16.4 2 12 2Zm0 10.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8Z"/></symbol>
-  <!-- capilla (ventana en esmeralda) -->
-  <symbol id="ic-chapel" viewBox="0 0 64 64"><g fill="currentColor"><path d="M32 4l3 4v4h3v4l-3 2v3l7 4v33H22V25l7-4v-3l-3-2V12h3V8z"/><rect x="30" y="34" width="4" height="12" fill="#134E43"/><path d="M14 30l8-5v33h-8zM50 30l-8-5v33h8z"/></g></symbol>
-  <!-- copas brindando -->
-  <symbol id="ic-cheers" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M14 8l9 20c1 4-1 8-5 9M6 12l8 18M12 51l16-5"/><path d="M50 8l-9 20c-1 4 1 8 5 9M58 12l-8 18M52 51L36 46"/><path d="M23 37l1 12M41 37l-1 12M18 51h12M34 51h12"/><path d="M22 20l20 0"/></g></symbol>
-  <!-- herradura (buena suerte, motivo ecuestre) -->
-  <symbol id="ic-horseshoe" viewBox="0 0 64 64">
-    <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M14 12v18a18 18 0 0 0 36 0V12"/>
-    <g fill="currentColor"><circle cx="12" cy="9" r="3"/><circle cx="21" cy="6" r="3"/><circle cx="43" cy="6" r="3"/><circle cx="52" cy="9" r="3"/></g>
-  </symbol>
-  <!-- silueta de caballo (marca de agua ecuestre) -->
-  <symbol id="ic-horse" viewBox="0 0 353 304">
-    <path fill="currentColor" d="M 52 26 L 52 30 L 51 32 L 52 33 L 52 36 L 54 39 L 54 42 L 50 46 L 48 50 L 48 53 L 47 54 L 47 59 L 46 60 L 46 66 L 47 67 L 47 71 L 48 71 L 48 69 L 51 65 L 53 67 L 54 69 L 54 80 L 53 81 L 53 85 L 52 86 L 52 89 L 51 90 L 50 97 L 48 101 L 48 104 L 53 109 L 54 112 L 57 115 L 63 115 L 64 114 L 68 114 L 70 113 L 73 110 L 73 101 L 75 99 L 76 96 L 78 94 L 81 87 L 82 86 L 84 86 L 88 84 L 92 80 L 94 82 L 94 86 L 95 87 L 95 106 L 94 107 L 94 111 L 93 112 L 93 115 L 92 116 L 92 118 L 89 124 L 85 129 L 84 131 L 84 133 L 83 134 L 83 136 L 82 137 L 82 141 L 81 142 L 81 155 L 82 156 L 82 160 L 78 162 L 63 162 L 62 161 L 46 161 L 38 165 L 38 166 L 35 169 L 34 171 L 34 173 L 31 177 L 31 178 L 29 180 L 29 181 L 26 184 L 26 185 L 23 188 L 23 189 L 14 200 L 14 205 L 15 206 L 15 209 L 16 210 L 16 224 L 18 228 L 21 231 L 21 232 L 27 238 L 28 238 L 29 236 L 32 233 L 35 227 L 35 221 L 34 219 L 30 215 L 29 215 L 26 211 L 27 210 L 32 210 L 32 209 L 29 206 L 29 202 L 30 201 L 31 196 L 34 192 L 34 191 L 36 189 L 36 188 L 40 184 L 40 183 L 45 178 L 47 177 L 57 177 L 58 178 L 61 178 L 62 179 L 64 179 L 68 181 L 71 181 L 72 182 L 74 182 L 75 183 L 77 183 L 81 185 L 84 185 L 85 186 L 87 186 L 91 188 L 98 188 L 104 185 L 109 185 L 111 188 L 111 190 L 112 191 L 112 225 L 111 226 L 111 228 L 108 234 L 108 239 L 109 240 L 109 244 L 110 245 L 110 259 L 109 260 L 109 267 L 108 268 L 108 272 L 107 273 L 107 275 L 106 276 L 106 278 L 104 282 L 99 287 L 97 287 L 93 291 L 93 292 L 91 294 L 88 300 L 88 302 L 89 303 L 109 303 L 111 301 L 111 293 L 116 288 L 118 289 L 116 292 L 117 292 L 120 289 L 120 287 L 121 286 L 121 280 L 120 279 L 120 275 L 119 274 L 119 265 L 120 264 L 120 253 L 121 252 L 121 248 L 125 242 L 125 234 L 126 233 L 126 227 L 127 226 L 127 222 L 128 221 L 128 218 L 129 217 L 129 214 L 130 213 L 130 210 L 131 209 L 131 206 L 132 205 L 132 202 L 133 201 L 133 198 L 134 197 L 134 193 L 135 192 L 138 192 L 139 193 L 142 193 L 143 194 L 147 194 L 148 195 L 153 195 L 154 196 L 182 196 L 183 195 L 188 195 L 189 194 L 196 193 L 197 192 L 202 191 L 208 188 L 209 189 L 209 193 L 210 194 L 210 196 L 212 200 L 216 205 L 216 206 L 222 212 L 222 213 L 233 223 L 233 224 L 235 226 L 235 232 L 228 239 L 227 239 L 224 242 L 223 242 L 212 250 L 209 251 L 205 255 L 205 257 L 204 258 L 204 278 L 207 282 L 208 285 L 211 288 L 212 290 L 213 290 L 218 285 L 221 279 L 221 277 L 222 276 L 222 273 L 219 269 L 217 269 L 216 268 L 216 265 L 217 264 L 219 264 L 220 265 L 223 265 L 225 266 L 225 265 L 222 262 L 222 257 L 226 253 L 227 253 L 232 249 L 235 248 L 237 246 L 247 241 L 249 241 L 252 239 L 255 239 L 257 242 L 257 247 L 258 248 L 258 255 L 257 256 L 257 263 L 256 264 L 256 268 L 255 269 L 255 272 L 254 273 L 253 280 L 251 284 L 248 287 L 241 289 L 237 293 L 237 294 L 233 299 L 233 302 L 234 303 L 254 303 L 256 301 L 256 295 L 257 293 L 260 290 L 262 290 L 266 288 L 271 290 L 268 284 L 268 281 L 267 280 L 267 265 L 268 264 L 268 258 L 269 257 L 269 253 L 270 252 L 270 249 L 271 248 L 272 241 L 273 240 L 273 238 L 275 234 L 275 230 L 276 229 L 275 227 L 271 223 L 271 222 L 266 217 L 266 216 L 264 214 L 259 204 L 259 199 L 267 191 L 267 190 L 272 184 L 276 176 L 276 174 L 277 173 L 277 170 L 278 169 L 278 154 L 277 153 L 277 150 L 276 149 L 276 147 L 272 140 L 273 138 L 276 138 L 282 141 L 285 145 L 287 149 L 287 151 L 288 152 L 288 158 L 289 159 L 289 162 L 288 163 L 288 170 L 287 171 L 287 176 L 286 177 L 286 182 L 285 183 L 285 189 L 284 190 L 284 207 L 285 208 L 285 214 L 286 215 L 286 218 L 287 219 L 287 221 L 288 222 L 288 224 L 289 225 L 289 227 L 290 229 L 292 231 L 293 234 L 299 240 L 300 240 L 297 236 L 297 234 L 296 233 L 297 231 L 299 233 L 299 234 L 301 236 L 303 240 L 306 243 L 306 244 L 315 252 L 319 254 L 321 254 L 322 255 L 327 255 L 328 256 L 329 255 L 334 255 L 334 254 L 332 254 L 328 252 L 322 246 L 322 245 L 320 243 L 314 231 L 315 230 L 317 230 L 320 233 L 322 234 L 324 234 L 325 235 L 336 235 L 336 234 L 332 234 L 331 233 L 329 233 L 321 225 L 320 222 L 318 220 L 320 219 L 323 222 L 325 223 L 327 223 L 328 224 L 328 223 L 326 221 L 326 220 L 324 218 L 322 214 L 322 212 L 321 211 L 321 208 L 320 207 L 320 188 L 321 187 L 323 189 L 323 193 L 324 194 L 324 199 L 325 200 L 325 208 L 326 208 L 327 206 L 327 203 L 328 202 L 328 199 L 329 198 L 329 178 L 328 177 L 328 172 L 327 171 L 327 168 L 326 167 L 327 166 L 329 166 L 331 168 L 332 168 L 332 167 L 329 164 L 326 158 L 326 156 L 324 152 L 324 148 L 321 142 L 321 140 L 316 134 L 316 133 L 313 130 L 312 130 L 306 125 L 304 124 L 302 124 L 301 123 L 299 123 L 298 122 L 284 122 L 283 123 L 280 123 L 272 127 L 268 131 L 266 131 L 264 130 L 259 125 L 258 125 L 253 121 L 249 119 L 247 119 L 244 117 L 241 117 L 240 116 L 236 116 L 235 115 L 220 115 L 219 116 L 214 116 L 213 117 L 208 117 L 207 118 L 199 118 L 198 119 L 194 119 L 193 118 L 186 118 L 185 117 L 178 116 L 170 112 L 161 103 L 163 102 L 167 104 L 170 104 L 165 99 L 165 98 L 163 96 L 163 94 L 162 92 L 160 90 L 161 88 L 163 88 L 164 89 L 167 89 L 167 88 L 166 88 L 162 83 L 158 75 L 157 70 L 154 64 L 151 61 L 152 59 L 154 60 L 161 60 L 161 59 L 159 58 L 157 58 L 155 56 L 154 56 L 144 46 L 143 46 L 140 43 L 135 41 L 132 38 L 131 38 L 122 29 L 116 26 L 110 26 L 109 25 L 106 25 L 105 26 L 103 26 L 102 25 L 103 23 L 99 23 L 98 22 L 89 22 L 88 23 L 85 23 L 84 24 L 82 24 L 78 26 L 75 29 L 74 29 L 66 21 L 63 20 L 64 22 L 64 28 L 65 29 L 65 33 L 63 35 L 62 35 L 58 31 L 57 31 L 54 28 L 53 26 Z"/>
-  </symbol>
-  <!-- sombrero vaquero -->
-  <symbol id="ic-cowboy-hat" viewBox="0 0 64 40">
-    <g fill="currentColor">
-      <ellipse cx="32" cy="32" rx="30" ry="7"/>
-      <path d="M14 30c0-14 8-26 18-26s18 12 18 26c-6-4-30-4-36 0Z"/>
-      <path d="M22 21c3-1.5 17-1.5 20 0-1 1.4-19 1.4-20 0Z" opacity=".35"/>
-    </g>
-  </symbol>
-  <!-- siluetas código de vestimenta: traje y vestido vaqueros -->
-  <symbol id="ic-suit" viewBox="0 0 44 96"><g fill="currentColor"><path d="M13 24h18l6 10-6 4-1 46h-4l-2-34-2 34h-4l-1-46-6-4z"/><path d="M6 90c2-5 8-8 16-8s14 3 16 8l-2 4H8z" opacity=".9"/></g></symbol>
-  <symbol id="ic-gown" viewBox="0 0 44 96"><g fill="currentColor"><path d="M22 22c6 0 8 4 8 8l-2 14 10 46H6l10-46-2-14c0-4 2-8 8-8z"/></g></symbol>
-</defs></svg>
-
-<div class="strip">
-
-  <!-- ============ PÁGINA 1 · PORTADA ============ -->
-  <section class="cover" id="cover">
-    <svg class="horse" viewBox="0 0 353 304" aria-hidden="true"><use href="#ic-horse"/></svg>
-
-    <div class="monogram"><span class="monogram__txt">I</span></div>
-    <svg class="ic-horseshoe" viewBox="0 0 64 64" aria-hidden="true"><use href="#ic-horseshoe"/></svg>
-
-    <!-- destellos -->
-    <span class="spark" style="top:44%;left:14%" aria-hidden="true"></span>
-    <span class="spark" style="top:38%;left:84%;animation-delay:1.1s" aria-hidden="true"></span>
-    <span class="spark" style="top:56%;left:8%;animation-delay:2s" aria-hidden="true"></span>
-    <span class="spark" style="top:62%;left:90%;animation-delay:.6s" aria-hidden="true"></span>
-    <span class="spark" style="top:76%;left:20%;animation-delay:1.6s" aria-hidden="true"></span>
-    <span class="spark" style="top:80%;left:78%;animation-delay:2.5s" aria-hidden="true"></span>
-
-    <p class="cover__kicker">Están cordialmente invitados a</p>
-    <h1 class="cover__name">Mis Quince Años</h1>
-
-    <button class="envelope" id="openBtn" aria-label="Abrir la invitación">
-      <span class="env" aria-hidden="true">
-        <span class="env__card"></span>
-        <span class="env__body">
-          <svg viewBox="0 0 184 128" preserveAspectRatio="none">
-            <path d="M3 124 L88 62 M181 124 L96 62" stroke="rgba(200,169,106,.55)" stroke-width="1.4" fill="none"/>
-          </svg>
-        </span>
-        <span class="env__flap"></span>
-        <span class="env__seal">I</span>
-      </span>
-    </button>
-
-    <div class="arrow-dots" aria-hidden="true">
-      <span class="chev"></span>
-      <i></i><i></i><i></i><i></i>
-    </div>
-    <p class="cover__cta">Clic para abrir nuestra invitación</p>
-  </section>
-
-  <!-- ============ PÁGINA 2 · INVITACIÓN ============ -->
-  <main class="invite" id="invite" hidden>
-
-    <!-- título -->
-    <section class="section title reveal" style="padding-top:64px">
-      <p class="title__kicker">Mis Quince Años</p>
-      <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <h2 class="title__name">Isabella</h2>
-      <p class="title__last">Chaves Cordero</p>
-    </section>
-
-    <!-- reproductor -->
-    <div class="music reveal" id="player">
-      <button class="music__btn" id="playBtn" aria-label="Reproducir canción">
-        <svg id="playIcon"><use href="#ic-play"/></svg>
-      </button>
-      <div class="music__meta">
-        <p class="music__line">Reproduce mi canción favorita — <span class="music__song" id="songName" translate="no">Superestrella, Aitana</span></p>
-        <div class="music__bar"><div class="music__prog" id="prog"></div></div>
+  <div class="site-shell">
+    <header class="hero" id="inicio">
+      <div class="hero__stitch" aria-hidden="true"></div>
+      <div class="hero__masthead">
+        <span>Isabella Chaves Cordero</span>
+        <span>San Salvador · 2026</span>
       </div>
-      <audio id="audio" src="assets/superestrella.mp3" preload="metadata"></audio>
-    </div>
 
-    <!-- fecha + mensaje + cuenta regresiva -->
-    <section class="section reveal">
-      <p class="date-line">Sábado · 5 de Septiembre · 2026</p>
-      <p class="message">Hay momentos que se sueñan y otros que se celebran. Este es uno de esos, y quiero vivirlo contigo.</p>
-      <div class="count-wrap">
-        <p class="count__lead">Faltan</p>
-        <div class="count" id="count" role="timer" aria-label="Cuenta regresiva">
-          <div class="box"><div class="num" id="cd-d">00</div><div class="lab">Días</div></div>
-          <span class="sep">:</span>
-          <div class="box"><div class="num" id="cd-h">00</div><div class="lab">Horas</div></div>
-          <span class="sep">:</span>
-          <div class="box"><div class="num" id="cd-m">00</div><div class="lab">Min</div></div>
-          <span class="sep">:</span>
-          <div class="box"><div class="num" id="cd-s">00</div><div class="lab">Seg</div></div>
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow">Mis quince años</p>
+        <h1 class="hero__name" aria-label="Isabella">
+          <span>Isa</span><span>bella</span>
+        </h1>
+        <div class="hero__horse" aria-hidden="true"></div>
+
+        <div class="hero__date" aria-label="5 de septiembre de 2026">
+          <span class="hero__date-number">05</span>
+          <span class="hero__date-word">Septiembre</span>
+          <span class="hero__date-number">26</span>
         </div>
+
+        <p class="hero__lede">Una noche elegante, alegre<br>y un poco vaquera.</p>
+        <a class="hero__open" href="#invitacion" id="openInvitation">
+          <span>Descubre el recorrido</span>
+          <span class="hero__open-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
-    </section>
+    </header>
 
-    <!-- acompañantes con caballo de fondo -->
-    <section class="accompany reveal">
-      <svg class="horse" viewBox="0 0 353 304" aria-hidden="true"><use href="#ic-horse"/></svg>
-
-      <h3 class="accompany__label">Con la bendición de</h3>
-      <div class="accompany__group">
-        <p class="accompany__role">Mis Padres</p>
-        <p class="accompany__ppl">Andrey Chaves Porras &amp; Johana Cordero Méndez</p>
-      </div>
-    </section>
-
-    <!-- ceremonia -->
-    <section class="section event reveal">
-      <div class="event__icon" aria-hidden="true"><svg><use href="#ic-chapel"/></svg></div>
-      <h3 class="event__kind caps">Ceremonia</h3>
-      <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__time">4:00&nbsp;p.m.</p>
-      <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__place">Iglesia San Salvador</p>
-      <a class="btn" href="https://maps.app.goo.gl/b8jt8KsqfXBpPUV17?g_st=aw" target="_blank" rel="noopener">
-        <svg><use href="#ic-pin"/></svg> Ver mapa
-      </a>
-    </section>
-
-    <!-- recepción -->
-    <section class="section event reveal">
-      <div class="event__icon event__icon--soft" aria-hidden="true"><svg><use href="#ic-cheers"/></svg></div>
-      <h3 class="event__kind script">Recepción</h3>
-      <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__place">Salón Comunal San Salvador</p>
-      <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
-      <p class="event__time event__time--note">Enseguida, al finalizar la misa</p>
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Sal%C3%B3n+Comunal+San+Salvador" target="_blank" rel="noopener">
-        <svg><use href="#ic-pin"/></svg> Ver mapa
-      </a>
-    </section>
-
-    <!-- código de vestimenta -->
-    <section class="section dress reveal">
-      <h3 class="dress__label">Código de vestimenta</h3>
-      <div class="dress__figs" aria-hidden="true">
-        <div class="dress__fig">
-          <svg class="hat" viewBox="0 0 64 40"><use href="#ic-cowboy-hat"/></svg>
-          <svg class="body" viewBox="0 0 44 96"><use href="#ic-suit"/></svg>
+    <main id="invitacion">
+      <section class="intro section-pad" aria-labelledby="intro-title">
+        <div class="intro__copy reveal">
+          <p class="eyebrow">La celebración</p>
+          <h2 id="intro-title">He imaginado esta noche durante mucho tiempo.</h2>
+          <p>Cumplir quince merece una celebración que se sienta como yo. Me encantará compartir la música, la emoción y cada recuerdo contigo.</p>
         </div>
-        <div class="dress__fig">
-          <svg class="hat" viewBox="0 0 64 40"><use href="#ic-cowboy-hat"/></svg>
-          <svg class="body" viewBox="0 0 44 96"><use href="#ic-gown"/></svg>
+
+        <aside class="date-card reveal" aria-label="Fecha de la celebración">
+          <span class="date-card__day">Sábado</span>
+          <strong>05</strong>
+          <span class="date-card__month">Septiembre</span>
+          <span class="date-card__year">2026</span>
+        </aside>
+
+        <div class="music reveal" id="musicPlayer">
+          <button class="music__button" id="playButton" type="button" aria-label="Reproducir Superestrella de Aitana">
+            <svg id="playIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          </button>
+          <div class="music__details">
+            <span class="music__label">La canción de esta noche</span>
+            <strong>Superestrella · Aitana</strong>
+            <span class="music__track" aria-hidden="true"><i id="musicProgress"></i></span>
+          </div>
+          <audio id="audio" src="assets/superestrella.mp3" preload="metadata"></audio>
         </div>
-      </div>
-      <p class="dress__code">Look Vaquero</p>
-      <p class="dress__note">Te pedimos con cariño <b>evitar el verde esmeralda</b>, reservado para la quinceañera.</p>
-    </section>
+      </section>
 
-    <!-- rsvp -->
-    <section class="rsvp reveal">
-      <h3 class="rsvp__hi">¿Nos acompañas?</h3>
-      <p class="rsvp__sub">Tu presencia es el mejor regalo. Confírmanos antes del 23 de agosto.</p>
-      <a class="btn btn--big" href="https://wa.me/NUMERO_PENDIENTE?text=Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Isabella" target="_blank" rel="noopener">
-        Confirmar asistencia
-      </a>
-    </section>
+      <section class="countdown" aria-labelledby="countdown-title">
+        <div class="countdown__heading section-pad reveal">
+          <p class="eyebrow eyebrow--light">La espera</p>
+          <h2 id="countdown-title">Nos vemos en</h2>
+        </div>
+        <div class="countdown__grid" id="countdown" role="timer" aria-label="Tiempo restante para la celebración">
+          <div><strong id="days">00</strong><span>Días</span></div>
+          <div><strong id="hours">00</strong><span>Horas</span></div>
+          <div><strong id="minutes">00</strong><span>Minutos</span></div>
+          <div><strong id="seconds">00</strong><span>Segundos</span></div>
+        </div>
+      </section>
 
-    <div class="foot reveal">
-      <div class="gem-row" aria-hidden="true"><span class="l"></span><span class="g"></span><span class="l"></span></div>
-      <p class="foot__name">Isabella</p>
-    </div>
-  </main>
-</div>
+      <section class="family section-pad" aria-labelledby="family-title">
+        <div class="family__rule" aria-hidden="true"><span></span><b>XV</b><span></span></div>
+        <div class="family__content reveal">
+          <p class="eyebrow">Con la bendición de</p>
+          <h2 id="family-title">Mis padres</h2>
+          <p class="family__names">Andrey Chaves Porras<br><span>&amp;</span> Johana Cordero Méndez</p>
+        </div>
+      </section>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/SplitText.min.js"></script>
-<script src="vendor/lenis.min.js"></script>
-<script src="vendor/confetti.browser.js"></script>
-<script>
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-// Modo premium si las bibliotecas cargaron; si no, la invitación funciona igual con CSS puro
-const premium = !reducedMotion && !!(window.gsap && window.ScrollTrigger && window.SplitText && window.Lenis);
+      <section class="itinerary section-pad" aria-labelledby="itinerary-title">
+        <header class="itinerary__header reveal">
+          <p class="eyebrow">El recorrido</p>
+          <h2 id="itinerary-title">De la ceremonia<br>a la celebración.</h2>
+          <p>Todo sucede la misma tarde. Guarda las ubicaciones y acompáñanos en cada momento.</p>
+        </header>
 
-// ---- Scroll suave (Lenis) sincronizado con ScrollTrigger ----
-let lenis = null;
-if(premium){
-  gsap.registerPlugin(ScrollTrigger, SplitText);
-  document.body.classList.add('premium');
-  lenis = new Lenis();
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
-  gsap.ticker.lagSmoothing(0);
-}
+        <div class="timeline">
+          <article class="event reveal">
+            <div class="event__index" aria-hidden="true">01</div>
+            <div class="event__time">
+              <time datetime="2026-09-05T16:00:00-06:00">4:00 <span>p. m.</span></time>
+              <small>Ceremonia</small>
+            </div>
+            <div class="event__details">
+              <h3>Iglesia San Salvador</h3>
+              <p>El inicio de una tarde para agradecer y celebrar juntos.</p>
+              <a class="text-link" href="https://maps.app.goo.gl/qs85FEYY8gBZDwsV6?g_st=aw" target="_blank" rel="noopener" aria-label="Cómo llegar a la Iglesia San Salvador en Google Maps">
+                Cómo llegar a la iglesia <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
 
-// ---- Confeti dorado al abrir el sobre ----
-function goldConfetti(){
-  if(typeof confetti !== 'function') return;
-  const r = openBtn.getBoundingClientRect();
-  const origin = {x:(r.left + r.width/2)/innerWidth, y:(r.top + r.height/2)/innerHeight};
-  const colors = ['#C8A96A','#DCC08C','#F0DFB2','#F7F6F1','#E6F0E9'];
-  confetti({particleCount:70, spread:70, startVelocity:26, gravity:.85, ticks:240, scalar:.9, origin, colors, disableForReducedMotion:true});
-  setTimeout(() => confetti({particleCount:40, spread:110, startVelocity:16, gravity:.7, ticks:200, scalar:.7, origin, colors, disableForReducedMotion:true}), 250);
-}
+          <article class="event reveal">
+            <div class="event__index" aria-hidden="true">02</div>
+            <div class="event__time">
+              <span class="event__moment">Después</span>
+              <small>Recepción</small>
+            </div>
+            <div class="event__details">
+              <h3>Salón Comunal San Salvador</h3>
+              <p>Al finalizar la misa seguimos con música, cena y baile.</p>
+              <a class="text-link" href="https://maps.app.goo.gl/b8jt8KsqfXBpPUV17?g_st=aw" target="_blank" rel="noopener" aria-label="Cómo llegar al Salón Comunal San Salvador en Google Maps">
+                Cómo llegar a la recepción <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-// ---- Portada → invitación (sobre que se abre) ----
-const openBtn = document.getElementById('openBtn');
-const cover = document.getElementById('cover');
-const invite = document.getElementById('invite');
-let opened = false;
+      <section class="dress" aria-labelledby="dress-title">
+        <div class="dress__hat" aria-hidden="true"></div>
+        <div class="dress__content section-pad reveal">
+          <p class="eyebrow eyebrow--light">Código de vestimenta</p>
+          <h2 id="dress-title">Vaquero<br>de gala.</h2>
+          <p>Botas, sombrero y tu mejor estilo para celebrar.</p>
+          <p class="dress__note"><span>Importante</span> El verde esmeralda está reservado para la quinceañera.</p>
+        </div>
+      </section>
 
-function showInvite(){
-  cover.style.display = 'none';
-  invite.hidden = false;
-  if(premium){
-    lenis.scrollTo(0, {immediate:true});
-    startReveals();
-    ScrollTrigger.refresh();
-  } else {
-    window.scrollTo({top:0, behavior:'auto'});
-    startReveals();
-  }
-}
+      <section class="rsvp section-pad" aria-labelledby="rsvp-title">
+        <p class="rsvp__number" aria-hidden="true">15</p>
+        <div class="rsvp__content reveal">
+          <p class="eyebrow">Reserva tu lugar</p>
+          <h2 id="rsvp-title">¿Bailamos juntos?</h2>
+          <p>Confirma tu asistencia antes del 23 de agosto para que podamos esperarte.</p>
+          <button class="button" id="rsvpButton" type="button" data-whatsapp="" aria-describedby="rsvpStatus">
+            Confirmar por WhatsApp
+          </button>
+          <p class="rsvp__status" id="rsvpStatus" role="status"></p>
+        </div>
+      </section>
+    </main>
 
-openBtn.addEventListener('click', () => {
-  if(opened) return;
-  opened = true;
-  if(reducedMotion){ showInvite(); return; }
-  openBtn.classList.add('open');           // solapa se abre, sello cae, tarjeta sale
-  setTimeout(goldConfetti, 450);           // ráfaga dorada cuando la solapa está abierta
-  setTimeout(() => {
-    if(premium){
-      gsap.to(cover, {opacity:0, y:-30, duration:.6, ease:'power2.in', onComplete:showInvite});
-    } else {
-      cover.classList.add('cover--out');
-      setTimeout(showInvite, 650);
-    }
-  }, 1000);
-});
+    <footer class="footer">
+      <span>05 · 09 · 26</span>
+      <strong>Isabella</strong>
+      <a href="#inicio">Volver al inicio ↑</a>
+    </footer>
+  </div>
 
-// ---- Reveals al hacer scroll ----
-function startReveals(){
-  if(premium){ gsapReveals(); return; }
-  const items = document.querySelectorAll('.reveal');
-  if(reducedMotion || !('IntersectionObserver' in window)){
-    items.forEach(el => el.classList.add('in'));
-    return;
-  }
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.12, rootMargin:'0px 0px -40px'});
-  items.forEach(el => io.observe(el));
-}
-
-function gsapReveals(){
-  // secciones completas
-  gsap.utils.toArray('.reveal').forEach(el => {
-    gsap.fromTo(el, {opacity:0, y:34}, {
-      opacity:1, y:0, duration:1.1, ease:'power3.out',
-      scrollTrigger:{trigger:el, start:'top 88%', once:true}
-    });
-  });
-  // hijos en cascada
-  const stagger = (sel, each) => {
-    const els = gsap.utils.toArray(sel);
-    if(!els.length) return;
-    gsap.from(els, {opacity:0, y:18, duration:.8, ease:'power2.out', stagger:each,
-      scrollTrigger:{trigger:els[0].parentElement, start:'top 85%', once:true}});
-  };
-  stagger('.count .box', .09);
-  stagger('.accompany__group', .16);
-  stagger('.dress__figs svg', .18);
-  // entrada dramática del nombre
-  gsap.fromTo('.title__name', {opacity:0, y:36, scale:.94}, {
-    opacity:1, y:0, scale:1, duration:1.4, ease:'expo.out',
-    scrollTrigger:{trigger:'.title', start:'top 85%', once:true}
-  });
-  // mensaje palabra por palabra (SplitText; la letra script no se divide para no romper ligaduras)
-  const split = SplitText.create('.message', {type:'words'});
-  gsap.from(split.words, {opacity:0, y:12, duration:.7, ease:'power2.out', stagger:.045,
-    scrollTrigger:{trigger:'.message', start:'top 88%', once:true}});
-}
-
-// ---- Cuenta regresiva ----
-// Fecha del evento (año-mes-díaThora)
-const target = new Date('2026-09-05T16:00:00').getTime();
-const pad = n => String(n).padStart(2,'0');
-const cells = {
-  d: document.getElementById('cd-d'),
-  h: document.getElementById('cd-h'),
-  m: document.getElementById('cd-m'),
-  s: document.getElementById('cd-s'),
-};
-function setCell(el, val){
-  if(el.textContent === val) return;
-  el.textContent = val;
-  if(reducedMotion) return;
-  el.classList.remove('tick');
-  // reinicia la animación sin forzar reflow síncrono
-  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('tick')));
-}
-function tick(){
-  const diff = target - Date.now();
-  setCell(cells.d, pad(Math.max(0, Math.floor(diff/86400000))));
-  setCell(cells.h, pad(Math.max(0, Math.floor(diff%86400000/3600000))));
-  setCell(cells.m, pad(Math.max(0, Math.floor(diff%3600000/60000))));
-  setCell(cells.s, pad(Math.max(0, Math.floor(diff%60000/1000))));
-}
-tick(); setInterval(tick, 1000);
-
-// ---- Reproductor ----
-const audio = document.getElementById('audio');
-const playBtn = document.getElementById('playBtn');
-const playIcon = document.getElementById('playIcon');
-const player = document.getElementById('player');
-const prog = document.getElementById('prog');
-
-function setIcon(name){ playIcon.innerHTML = '<use href="#ic-'+name+'"/>'; }
-
-// La reproducción arranca en el coro (el momento más reconocible, ~0:55 según Shazam)
-const CHORUS_START = 52;
-let startedOnce = false;
-
-function playFromChorus(){
-  const seekAndPlay = () => { audio.currentTime = CHORUS_START; audio.play().catch(()=>{}); };
-  if(audio.readyState >= 1){ seekAndPlay(); }
-  else { audio.addEventListener('loadedmetadata', seekAndPlay, {once:true}); audio.load(); }
-  startedOnce = true;
-}
-
-playBtn.addEventListener('click', () => {
-  if(player.classList.contains('playing')){
-    player.classList.remove('playing'); setIcon('play');
-    audio.pause();
-    playBtn.setAttribute('aria-label','Reproducir canción');
-  } else {
-    player.classList.add('playing'); setIcon('pause');
-    playBtn.setAttribute('aria-label','Pausar canción');
-    if(startedOnce){ audio.play().catch(()=>{}); }
-    else { playFromChorus(); }
-  }
-});
-audio.addEventListener('timeupdate', () => {
-  if(audio.duration) prog.style.transform = 'scaleX(' + (audio.currentTime/audio.duration) + ')';
-});
-audio.addEventListener('ended', () => {
-  player.classList.remove('playing'); setIcon('play'); prog.style.transform = 'scaleX(0)';
-  startedOnce = false;                   // el próximo play vuelve a empezar en el coro
-});
-</script>
+  <script src="app.js"></script>
 </body>
 </html>
