@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0F3D34">
+<link rel="icon" href="data:,">
 <title>Mis Quince Años · Isabella Chaves Cordero</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,32 +68,37 @@ body{
 
 /* ========== PÁGINA 1 · PORTADA ========== */
 .cover{
-  min-height:100vh;
+  min-height:100vh;min-height:100svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:64px 0 46px;
+  padding:max(26px,5svh) clamp(18px,6vw,34px) max(28px,5svh);
   text-align:center;
   transition:opacity .7s ease, transform .7s ease;
-  position:relative;
+  position:relative;overflow:hidden;isolation:isolate;
 }
 .cover--out{opacity:0;transform:translateY(-26px);pointer-events:none}
+.cover::before{
+  content:"";position:absolute;width:360px;height:360px;left:50%;top:54%;z-index:0;
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(circle,rgba(200,169,106,.13),transparent 68%);
+}
 
 /* marca de agua ecuestre detrás del monograma */
 .cover .horse{
-  position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);
-  width:150%;max-width:none;opacity:.12;color:var(--gold);z-index:0;pointer-events:none;
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:145%;max-width:none;opacity:.075;color:var(--gold);z-index:0;pointer-events:none;
 }
 
 .monogram{
   position:relative;z-index:1;
-  width:148px;height:148px;border-radius:50%;
+  width:84px;height:84px;border-radius:50%;
   border:1.5px solid var(--gold);
   display:grid;place-items:center;
   animation:fadeUp 1s .05s ease both;
   box-shadow:0 0 0 5px var(--emerald), 0 0 0 6.5px var(--gold-dim);
 }
-.monogram__txt{font-family:'Great Vibes',cursive;font-size:64px;color:var(--gold);line-height:1;transform:translateY(-3px)}
+.monogram__txt{font-family:'Great Vibes',cursive;font-size:42px;color:var(--gold);line-height:1;transform:translateY(-2px)}
 .cover .ic-horseshoe{
-  width:32px;height:32px;margin-top:16px;
+  width:24px;height:24px;margin-top:11px;
   background:var(--gold);
   -webkit-mask:url("assets/707-200.svg") center/contain no-repeat;
   mask:url("assets/707-200.svg") center/contain no-repeat;
@@ -101,13 +107,18 @@ body{
 
 .cover__kicker{
   font-family:var(--caps);letter-spacing:.42em;text-transform:uppercase;
-  font-size:12px;color:var(--gold);margin:26px 0 4px;padding-left:.42em;
+  font-size:10px;color:var(--gold);margin:18px 0 2px;padding-left:.42em;
   animation:fadeUp 1s .2s ease both;
 }
 .cover__name{
   font-family:var(--script);color:var(--cream);font-weight:400;
-  font-size:60px;line-height:.9;margin:2px 0 26px;
+  font-size:clamp(52px,16vw,68px);line-height:.9;margin:2px 0 4px;
   animation:fadeUp 1s .35s ease both;
+}
+.cover__date{
+  font-family:var(--caps);font-size:9px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold-soft);margin:0 0 clamp(20px,4svh,34px);padding-left:.32em;
+  animation:fadeUp 1s .42s ease both;
 }
 
 /* destellos dorados */
@@ -123,7 +134,7 @@ body{
 
 /* ---- sobre con sello de lacre ---- */
 .envelope{
-  background:none;border:0;cursor:pointer;padding:10px;
+  background:none;border:0;cursor:pointer;padding:14px 10px 10px;
   display:block;
   animation:fadeUp 1s .5s ease both, floaty 4.5s 1.5s ease-in-out infinite;
 }
@@ -134,39 +145,52 @@ body{
 .envelope.open .env, .envelope.open:hover .env{transform:none}
 
 .env{
-  position:relative;display:block;width:184px;height:128px;
-  perspective:800px;
+  position:relative;display:block;width:min(72vw,268px);aspect-ratio:268/180;
+  perspective:1000px;transform-style:preserve-3d;
   filter:drop-shadow(0 20px 28px rgba(0,0,0,.4));
   transition:transform .5s cubic-bezier(.2,.8,.2,1), filter .5s;
 }
 .envelope:hover .env{transform:translateY(-4px) scale(1.03);filter:drop-shadow(0 24px 34px rgba(0,0,0,.45)) drop-shadow(0 0 18px rgba(200,169,106,.35))}
 
 .env__card{
-  position:absolute;left:14px;right:14px;top:10px;height:88px;
-  background:var(--cream);border:1px solid var(--gold-dim);border-radius:3px;
-  z-index:1;transform:translateY(14px);
-  transition:transform .8s .4s cubic-bezier(.2,.8,.2,1);
+  position:absolute;left:7%;right:7%;top:6%;height:76%;
+  background:
+    linear-gradient(135deg,rgba(200,169,106,.08),transparent 30%),
+    var(--cream);
+  border:1px solid var(--gold-dim);border-radius:3px;
+  z-index:1;transform:translateY(16%);
+  transition:transform .9s .34s cubic-bezier(.16,.84,.28,1),box-shadow .55s,z-index 0s .8s;
   box-shadow:0 -6px 18px rgba(0,0,0,.18);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--emerald-dark);
 }
-.env__card::before{ /* diamante dorado de la tarjeta */
-  content:"";position:absolute;top:14px;left:50%;width:8px;height:8px;
-  background:var(--gold);transform:translateX(-50%) rotate(45deg);
+.env__card::before{
+  content:"";position:absolute;inset:8px;border:1px solid rgba(200,169,106,.42);pointer-events:none;
 }
-.env__card::after{ /* líneas de "texto" */
-  content:"";position:absolute;left:26px;right:26px;top:34px;height:34px;
-  background:repeating-linear-gradient(180deg,rgba(15,61,52,.28) 0 1.5px,transparent 1.5px 10px);
+.env__card::after{
+  content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg);
+  position:absolute;top:18px;left:calc(50% - 3.5px);
 }
-.open .env__card{transform:translateY(-78px)}
+.env__card-kicker{font-family:var(--caps);font-size:7px;letter-spacing:.32em;text-transform:uppercase;color:#97793f;padding-left:.32em}
+.env__card-name{font-family:var(--script);font-size:36px;line-height:1;color:var(--emerald-dark);margin:5px 0 2px}
+.env__card-date{font-family:var(--caps);font-size:7px;letter-spacing:.28em;color:#97793f;padding-left:.28em}
+.open .env__card{transform:translateY(-76%)}
+.cover--letter .env__card{
+  z-index:6;transform:translateY(-80%) scale(1.08);
+  box-shadow:0 24px 44px rgba(0,0,0,.32);
+  transition:transform .55s cubic-bezier(.16,.84,.28,1),box-shadow .55s,z-index 0s;
+}
+.cover--letter .env__body{transform:translateY(10px);opacity:.72}
 
 .env__body{
   position:absolute;inset:0;z-index:2;
   background:var(--cream);border:1.5px solid var(--gold);border-radius:7px;
-  overflow:hidden;
+  overflow:hidden;transition:transform .55s ease,opacity .55s ease;
 }
 .env__body svg{position:absolute;inset:0;width:100%;height:100%}
 
 .env__flap{
-  position:absolute;top:1px;left:1px;right:1px;height:66px;z-index:3;
+  position:absolute;top:1px;left:1px;right:1px;height:52%;z-index:3;
   clip-path:polygon(0 0,100% 0,50% 100%);
   background:linear-gradient(180deg,#F2EEE3,#E7E0CE);
   transform-origin:50% 0;
@@ -176,30 +200,26 @@ body{
 .open .env__flap{transform:rotateX(-178deg);z-index:0}
 
 .env__seal{
-  position:absolute;top:46px;left:50%;transform:translateX(-50%);
-  width:42px;height:42px;border-radius:50%;z-index:4;
+  position:absolute;top:36%;left:50%;transform:translateX(-50%);
+  width:56px;height:56px;border-radius:50%;z-index:4;
   background:radial-gradient(circle at 35% 30%, #DCC08C, #C8A96A 55%, #9E8149);
   box-shadow:inset 0 -2px 5px rgba(0,0,0,.28), inset 0 2px 4px rgba(255,255,255,.35), 0 3px 8px rgba(0,0,0,.3);
   display:grid;place-items:center;
-  font-family:var(--script);font-size:24px;color:var(--emerald-dark);
+  font-family:var(--script);font-size:30px;color:var(--emerald-dark);
   transition:transform .45s ease, opacity .35s ease;
 }
 .open .env__seal{transform:translate(-50%,12px) scale(.5) rotate(-14deg);opacity:0}
 
-/* flecha de círculos */
-.arrow-dots{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:24px;animation:fadeUp 1s .65s ease both}
-.arrow-dots .chev{width:16px;height:16px;border-left:2px solid var(--gold);border-top:2px solid var(--gold);transform:rotate(45deg)}
-.arrow-dots i{display:block;border-radius:50%;background:var(--gold-soft);animation:dotPulse 1.8s ease-in-out infinite}
-.arrow-dots i:nth-child(2){width:5px;height:5px;animation-delay:.45s}
-.arrow-dots i:nth-child(3){width:6px;height:6px;animation-delay:.3s}
-.arrow-dots i:nth-child(4){width:7px;height:7px;animation-delay:.15s}
-.arrow-dots i:nth-child(5){width:8px;height:8px;animation-delay:0s}
-@keyframes dotPulse{0%,100%{opacity:.35}50%{opacity:1}}
+/* confeti dorado hecho a mano en canvas (sin librería) */
+#burst{position:fixed;inset:0;z-index:80;pointer-events:none}
+
 .cover__cta{
   font-family:var(--caps);letter-spacing:.24em;text-transform:uppercase;
-  font-size:12.5px;color:var(--mint);margin-top:16px;
+  font-size:10px;color:var(--mint);margin:clamp(17px,3svh,28px) 0 0;
   animation:fadeUp 1s .75s ease both;
 }
+.cover__cta strong{display:block;color:var(--gold);font-weight:500;font-size:11px}
+.cover__cta span{display:block;margin-top:5px;opacity:.7;font-family:var(--serif);font-style:italic;letter-spacing:.05em;text-transform:none;font-size:13px}
 
 /* ========== PÁGINA 2 · INVITACIÓN ========== */
 .invite[hidden]{display:none}
@@ -239,6 +259,16 @@ body.premium .reveal, body.premium .cover{transition:none}
   }
 }
 @keyframes shimmer{from{background-position:0% 0}to{background-position:220% 0}}
+
+/* dorado tipo lámina que "atrapa la luz": el barrido se anima con el scroll (JS) */
+.foil{color:var(--gold)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .foil{
+    background:linear-gradient(100deg,#A8894F 0%,#C8A96A 22%,#F0DFB2 42%,#FFF7DD 50%,#F0DFB2 58%,#C8A96A 78%,#A8894F 100%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+}
 .title__last{
   font-family:var(--caps);letter-spacing:.4em;text-transform:uppercase;
   font-size:14px;color:var(--cream);padding-left:.4em;
@@ -311,9 +341,20 @@ body.premium .reveal, body.premium .cover{transition:none}
 /* código de vestimenta */
 .dress{text-align:center}
 .dress__label{font-family:var(--caps);letter-spacing:.34em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:500}
-.dress__western-art{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:24px;margin:18px 0 8px}
+.dress__western-art{
+  position:relative;display:flex;flex-direction:row;align-items:center;justify-content:center;
+  width:min(100%,286px);min-height:138px;gap:clamp(8px,4vw,18px);margin:20px auto 10px;
+}
+.dress__western-art::before{
+  content:"";position:absolute;left:3%;right:3%;top:50%;height:1px;z-index:0;
+  background:linear-gradient(90deg,transparent,var(--gold-dim) 18%,var(--gold-dim) 82%,transparent);
+}
+.dress__western-art::after{
+  content:"";position:absolute;left:50%;top:calc(50% - 4px);width:8px;height:8px;z-index:0;
+  background:var(--emerald);border:1px solid var(--gold);transform:translateX(-50%) rotate(45deg);
+}
 .dress__hat-art{
-  width:132px;aspect-ratio:514/430;
+  position:relative;z-index:1;width:48%;max-width:132px;aspect-ratio:514/430;
   background:var(--gold);
   -webkit-mask:url("assets/cowboy-hat.png") center/contain no-repeat;
   mask:url("assets/cowboy-hat.png") center/contain no-repeat;
@@ -321,7 +362,7 @@ body.premium .reveal, body.premium .cover{transition:none}
   filter:drop-shadow(0 12px 18px rgba(0,0,0,.22));
 }
 .dress__boots-art{
-  width:112px;aspect-ratio:1/1;
+  position:relative;z-index:1;width:41%;max-width:112px;aspect-ratio:1/1;
   background:var(--gold);
   -webkit-mask:url("assets/imagen(3)-negra.svg") center/contain no-repeat;
   mask:url("assets/imagen(3)-negra.svg") center/contain no-repeat;
@@ -343,9 +384,19 @@ body.premium .reveal, body.premium .cover{transition:none}
 .foot__name{font-family:var(--script);font-size:36px;color:var(--gold);margin-top:14px}
 
 @media (max-width:460px){
-  .cover__name{font-size:52px}
   .title__name{font-size:66px}
   .count .box{min-width:56px}
+}
+@media (max-height:700px){
+  .cover{padding-top:18px;padding-bottom:18px}
+  .monogram{width:68px;height:68px}
+  .monogram__txt{font-size:35px}
+  .cover .ic-horseshoe{width:20px;height:20px;margin-top:8px}
+  .cover__kicker{margin-top:12px}
+  .cover__name{font-size:48px}
+  .cover__date{margin-bottom:12px}
+  .env{width:min(67vw,236px)}
+  .cover__cta{margin-top:12px}
 }
 @media (min-width:900px){
   .section{padding-left:48px;padding-right:48px}
@@ -372,6 +423,8 @@ body.premium .reveal, body.premium .cover{transition:none}
   </symbol>
 </defs></svg>
 
+<canvas id="burst" aria-hidden="true"></canvas>
+
 <div class="strip">
 
   <!-- ============ PÁGINA 1 · PORTADA ============ -->
@@ -389,15 +442,20 @@ body.premium .reveal, body.premium .cover{transition:none}
     <span class="spark" style="top:76%;left:20%;animation-delay:1.6s" aria-hidden="true"></span>
     <span class="spark" style="top:80%;left:78%;animation-delay:2.5s" aria-hidden="true"></span>
 
-    <p class="cover__kicker">Están cordialmente invitados a</p>
-    <h1 class="cover__name">Mis Quince Años</h1>
+    <p class="cover__kicker">Una invitación para ti</p>
+    <h1 class="cover__name">Isabella</h1>
+    <p class="cover__date">Mis quince años · 05 · 09 · 2026</p>
 
     <button class="envelope" id="openBtn" aria-label="Abrir la invitación">
       <span class="env" aria-hidden="true">
-        <span class="env__card"></span>
+        <span class="env__card">
+          <span class="env__card-kicker">Mis quince años</span>
+          <span class="env__card-name">Isabella</span>
+          <span class="env__card-date">05 · 09 · 2026</span>
+        </span>
         <span class="env__body">
-          <svg viewBox="0 0 184 128" preserveAspectRatio="none">
-            <path d="M3 124 L88 62 M181 124 L96 62" stroke="rgba(200,169,106,.55)" stroke-width="1.4" fill="none"/>
+          <svg viewBox="0 0 268 180" preserveAspectRatio="none">
+            <path d="M3 176 L128 88 M265 176 L140 88" stroke="rgba(200,169,106,.55)" stroke-width="1.4" fill="none"/>
           </svg>
         </span>
         <span class="env__flap"></span>
@@ -405,11 +463,7 @@ body.premium .reveal, body.premium .cover{transition:none}
       </span>
     </button>
 
-    <div class="arrow-dots" aria-hidden="true">
-      <span class="chev"></span>
-      <i></i><i></i><i></i><i></i>
-    </div>
-    <p class="cover__cta">Clic para abrir nuestra invitación</p>
+    <p class="cover__cta"><strong>Toca el sello</strong><span>y abre nuestra invitación</span></p>
   </section>
 
   <!-- ============ PÁGINA 2 · INVITACIÓN ============ -->
@@ -428,7 +482,7 @@ body.premium .reveal, body.premium .cover{transition:none}
       <p class="date-line">Sábado · 5 de Septiembre · 2026</p>
       <p class="message">Hay momentos que se sueñan y otros que se celebran. Este es uno de esos, y quiero vivirlo contigo.</p>
       <div class="count-wrap">
-        <p class="count__lead">Faltan</p>
+        <p class="count__lead foil">Faltan</p>
         <div class="count" id="count" role="timer" aria-label="Cuenta regresiva">
           <div class="box"><div class="num" id="cd-d">00</div><div class="lab">Días</div></div>
           <span class="sep">:</span>
@@ -491,7 +545,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 
     <!-- rsvp -->
     <section class="rsvp reveal">
-      <h3 class="rsvp__hi">¿Nos acompañas?</h3>
+      <h3 class="rsvp__hi foil">¿Nos acompañas?</h3>
       <p class="rsvp__sub">Tu presencia es el mejor regalo. Confírmanos a más tardar el 18 de agosto.</p>
       <a class="btn btn--big" href="https://wa.me/50689146022?text=Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Isabella" target="_blank" rel="noopener">
         Confirmar asistencia
@@ -500,7 +554,7 @@ body.premium .reveal, body.premium .cover{transition:none}
 
     <div class="foot reveal">
       <div class="gem-row" aria-hidden="true"><span class="l"></span><span class="g"></span><span class="l"></span></div>
-      <p class="foot__name">Isabella</p>
+      <p class="foot__name foil">Isabella</p>
     </div>
   </main>
 </div>
@@ -509,7 +563,6 @@ body.premium .reveal, body.premium .cover{transition:none}
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/SplitText.min.js"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="vendor/confetti.browser.js"></script>
 <script>
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Modo premium si las bibliotecas cargaron; si no, la invitación funciona igual con CSS puro
@@ -526,14 +579,45 @@ if(premium){
   gsap.ticker.lagSmoothing(0);
 }
 
-// ---- Confeti dorado al abrir el sobre ----
-function goldConfetti(){
-  if(typeof confetti !== 'function') return;
-  const r = openBtn.getBoundingClientRect();
-  const origin = {x:(r.left + r.width/2)/innerWidth, y:(r.top + r.height/2)/innerHeight};
-  const colors = ['#C8A96A','#DCC08C','#F0DFB2','#F7F6F1','#E6F0E9'];
-  confetti({particleCount:70, spread:70, startVelocity:26, gravity:.85, ticks:240, scalar:.9, origin, colors, disableForReducedMotion:true});
-  setTimeout(() => confetti({particleCount:40, spread:110, startVelocity:16, gravity:.7, ticks:200, scalar:.7, origin, colors, disableForReducedMotion:true}), 250);
+// ---- Confeti dorado hecho a mano (canvas, sin librería) ----
+const burstCanvas = document.getElementById('burst');
+const bctx = burstCanvas.getContext('2d');
+let grains = [], burstRaf = null;
+function fitBurst(){
+  burstCanvas.width = innerWidth * devicePixelRatio;
+  burstCanvas.height = innerHeight * devicePixelRatio;
+  bctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+fitBurst();
+addEventListener('resize', fitBurst);
+const GOLD = ['#F0DFB2','#DCC08C','#C8A96A','#9E8149','#FFF3D6'];
+function burst(x, y){
+  if(reducedMotion) return;
+  for(let i=0;i<42;i++){
+    const a = Math.random()*Math.PI*2, sp = 2.2 + Math.random()*4.6;
+    grains.push({x, y, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp - 2.8,
+      w:3+Math.random()*4, h:6+Math.random()*6, r:Math.random()*Math.PI,
+      vr:(Math.random()-.5)*.3, life:1, decay:.010+Math.random()*.012,
+      c:GOLD[i%GOLD.length]});
+  }
+  if(!burstRaf) burstRaf = requestAnimationFrame(stepBurst);
+}
+function stepBurst(){
+  bctx.clearRect(0, 0, innerWidth, innerHeight);
+  grains = grains.filter(p => p.life > 0);
+  grains.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += .16; p.vx *= .985; p.r += p.vr; p.life -= p.decay;
+    bctx.save(); bctx.globalAlpha = Math.max(0, p.life);
+    bctx.translate(p.x, p.y); bctx.rotate(p.r);
+    bctx.fillStyle = p.c; bctx.fillRect(-p.w/2, -p.h/2, p.w, p.h); bctx.restore();
+  });
+  if(grains.length){ burstRaf = requestAnimationFrame(stepBurst); }
+  else { burstRaf = null; bctx.clearRect(0, 0, innerWidth, innerHeight); }
+}
+function sealBurst(){
+  const seal = openBtn.querySelector('.env__seal');
+  const r = (seal || openBtn).getBoundingClientRect();
+  burst(r.left + r.width/2, r.top + r.height/2);
 }
 
 // ---- Portada → invitación (sobre que se abre) ----
@@ -559,8 +643,24 @@ openBtn.addEventListener('click', () => {
   if(opened) return;
   opened = true;
   if(reducedMotion){ showInvite(); return; }
-  openBtn.classList.add('open');           // solapa se abre, sello cae, tarjeta sale
-  setTimeout(goldConfetti, 450);           // ráfaga dorada cuando la solapa está abierta
+
+  const seal = openBtn.querySelector('.env__seal');
+  // 1) el sello se presiona al tocarlo
+  seal.style.transition = 'transform .13s cubic-bezier(.34,1.56,.64,1)';
+  seal.style.transform = 'translateX(-50%) scale(.82)';
+
+  setTimeout(() => {
+    // 2) suelta la presión, abre la solapa en 3D y estalla el confeti dorado
+    seal.style.transition = '';
+    seal.style.transform = '';
+    openBtn.classList.add('open');         // solapa se abre, sello cae, tarjeta sale
+    setTimeout(sealBurst, 340);            // ráfaga cuando la solapa cruza la vertical
+  }, 150);
+
+  // 3) la carta termina de salir y pasa al frente antes de revelar la invitación
+  setTimeout(() => cover.classList.add('cover--letter'), 900);
+
+  // 4) la portada cede y entra la invitación
   setTimeout(() => {
     if(premium){
       gsap.to(cover, {opacity:0, y:-30, duration:.6, ease:'power2.in', onComplete:showInvite});
@@ -568,7 +668,7 @@ openBtn.addEventListener('click', () => {
       cover.classList.add('cover--out');
       setTimeout(showInvite, 650);
     }
-  }, 1000);
+  }, 1650);
 });
 
 // ---- Reveals al hacer scroll ----
@@ -604,15 +704,35 @@ function gsapReveals(){
   };
   stagger('.count .box', .09);
   stagger('.accompany__group', .16);
-  // entrada dramática del nombre
-  gsap.fromTo('.title__name', {opacity:0, y:36, scale:.94}, {
-    opacity:1, y:0, scale:1, duration:1.4, ease:'expo.out',
-    scrollTrigger:{trigger:'.title', start:'top 85%', once:true}
-  });
+  // el nombre se revela como escrito con tinta (barrido de izquierda a derecha)
+  gsap.fromTo('.title__name',
+    {clipPath:'inset(-14% 100% -22% 0%)', webkitClipPath:'inset(-14% 100% -22% 0%)'},
+    {clipPath:'inset(-14% -2% -22% 0%)', webkitClipPath:'inset(-14% -2% -22% 0%)',
+     duration:1.5, ease:'power2.inOut',
+     scrollTrigger:{trigger:'.title', start:'top 85%', once:true}});
+  gsap.from('.title__kicker', {opacity:0, y:14, duration:.7, ease:'power3.out',
+    scrollTrigger:{trigger:'.title', start:'top 85%', once:true}});
+  gsap.from('.title__last', {opacity:0, y:12, duration:.7, delay:.5, ease:'power3.out',
+    scrollTrigger:{trigger:'.title', start:'top 85%', once:true}});
   // mensaje palabra por palabra (SplitText; la letra script no se divide para no romper ligaduras)
   const split = SplitText.create('.message', {type:'words'});
   gsap.from(split.words, {opacity:0, y:12, duration:.7, ease:'power2.out', stagger:.045,
     scrollTrigger:{trigger:'.message', start:'top 88%', once:true}});
+  // el dorado "atrapa la luz": el barrido de la lámina recorre el texto con el scroll
+  gsap.utils.toArray('.foil').forEach(el => {
+    gsap.fromTo(el, {backgroundPositionX:'0%'}, {backgroundPositionX:'100%', ease:'none',
+      scrollTrigger:{trigger:el, start:'top bottom', end:'bottom top', scrub:true}});
+  });
+  // la cuenta regresiva sube desde 0 al entrar en pantalla, luego sigue en vivo
+  ScrollTrigger.create({trigger:'#count', start:'top 82%', once:true, onEnter(){
+    const p = parts();
+    [[cells.d,p.d],[cells.h,p.h],[cells.m,p.m],[cells.s,p.s]].forEach((t,i) => {
+      const o = {v:0};
+      gsap.to(o, {v:t[1], duration:1.4, delay:i*.1, ease:'power2.out',
+        onUpdate(){ t[0].textContent = pad(Math.round(o.v)); },
+        onComplete(){ if(i===3) startCountdown(); }});
+    });
+  }});
 }
 
 // ---- Cuenta regresiva ----
@@ -625,6 +745,15 @@ const cells = {
   m: document.getElementById('cd-m'),
   s: document.getElementById('cd-s'),
 };
+function parts(){
+  const diff = Math.max(0, target - Date.now());
+  return {
+    d: Math.floor(diff/86400000),
+    h: Math.floor(diff%86400000/3600000),
+    m: Math.floor(diff%3600000/60000),
+    s: Math.floor(diff%60000/1000),
+  };
+}
 function setCell(el, val){
   if(el.textContent === val) return;
   el.textContent = val;
@@ -634,13 +763,22 @@ function setCell(el, val){
   requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('tick')));
 }
 function tick(){
-  const diff = target - Date.now();
-  setCell(cells.d, pad(Math.max(0, Math.floor(diff/86400000))));
-  setCell(cells.h, pad(Math.max(0, Math.floor(diff%86400000/3600000))));
-  setCell(cells.m, pad(Math.max(0, Math.floor(diff%3600000/60000))));
-  setCell(cells.s, pad(Math.max(0, Math.floor(diff%60000/1000))));
+  const p = parts();
+  setCell(cells.d, pad(p.d));
+  setCell(cells.h, pad(p.h));
+  setCell(cells.m, pad(p.m));
+  setCell(cells.s, pad(p.s));
 }
-tick(); setInterval(tick, 1000);
+let counting = false;
+function startCountdown(){
+  if(counting) return;
+  counting = true;
+  tick();
+  setInterval(tick, 1000);
+}
+// En modo premium la cuenta arranca con el conteo animado al entrar en pantalla
+// (ver gsapReveals). Sin librerías, arranca de inmediato.
+if(!premium) startCountdown();
 
 </script>
 </body>
