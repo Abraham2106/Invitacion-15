@@ -91,7 +91,13 @@ body{
   box-shadow:0 0 0 5px var(--emerald), 0 0 0 6.5px var(--gold-dim);
 }
 .monogram__txt{font-family:var(--script);font-size:56px;color:var(--gold);line-height:1;transform:translateY(-2px)}
-.cover .ic-horseshoe{width:36px;height:36px;object-fit:contain;margin-top:16px;animation:fadeUp 1s .15s ease both}
+.cover .ic-horseshoe{
+  width:32px;height:32px;margin-top:16px;
+  background:var(--gold);
+  -webkit-mask:url("assets/707-200.svg") center/contain no-repeat;
+  mask:url("assets/707-200.svg") center/contain no-repeat;
+  animation:fadeUp 1s .15s ease both;
+}
 
 .cover__kicker{
   font-family:var(--caps);letter-spacing:.42em;text-transform:uppercase;
@@ -373,7 +379,7 @@ body.premium .reveal, body.premium .cover{transition:none}
     <svg class="horse" viewBox="0 0 353 304" aria-hidden="true"><use href="#ic-horse"/></svg>
 
     <div class="monogram"><span class="monogram__txt">I</span></div>
-    <img class="ic-horseshoe" src="assets/707-200.png" alt="" aria-hidden="true">
+    <div class="ic-horseshoe" aria-hidden="true"></div>
 
     <!-- destellos -->
     <span class="spark" style="top:44%;left:14%" aria-hidden="true"></span>
