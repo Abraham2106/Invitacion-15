@@ -238,33 +238,25 @@ body.premium .reveal, body.premium .cover{transition:none}
   font-size:14px;color:var(--cream);padding-left:.4em;
 }
 
-/* reproductor de música */
+/* reproductor de música — impreso en la página, no un panel flotante */
 .music{
-  margin:8px 30px 0;background:var(--emerald-dark);border:1px solid var(--gold-dim);
-  border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;
-  box-shadow:0 10px 26px rgba(0,0,0,.28);
+  margin:26px auto 0;max-width:300px;padding:0 30px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
 }
 .music__btn{
-  flex:0 0 auto;width:46px;height:46px;border-radius:50%;cursor:pointer;
-  background:transparent;border:1.5px solid var(--gold);color:var(--gold);
+  flex:0 0 auto;width:36px;height:36px;border-radius:50%;cursor:pointer;
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
   display:grid;place-items:center;
   transition:transform .2s, background .25s, color .25s;
 }
 .music__btn:hover{transform:scale(1.06);background:var(--gold);color:var(--emerald-dark)}
 .music__btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.music__btn svg{width:18px;height:18px}
-.music__meta{flex:1;min-width:0}
-.music__label{font-family:var(--caps);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-.music__song{font-size:17px;color:var(--cream);margin-top:2px;font-style:italic}
-.music__bar{height:3px;border-radius:3px;background:rgba(230,240,233,.18);margin-top:9px;overflow:hidden}
+.music__btn svg{width:13px;height:13px}
+.music__meta{flex:0 1 auto;text-align:left;min-width:0}
+.music__line{font-size:15px;line-height:1.35;font-style:italic;color:var(--mint)}
+.music__song{color:var(--gold-soft)}
+.music__bar{height:1px;background:var(--gold-dim);margin-top:6px;overflow:hidden}
 .music__prog{height:100%;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;transition:transform .25s linear}
-.eq{display:flex;align-items:flex-end;gap:2px;height:16px}
-.eq span{width:3px;background:var(--gold-soft);height:16px;border-radius:2px;transform:scaleY(.25);transform-origin:50% 100%}
-.music.playing .eq span{animation:eq .9s ease-in-out infinite}
-.music.playing .eq span:nth-child(2){animation-delay:.15s}
-.music.playing .eq span:nth-child(3){animation-delay:.3s}
-.music.playing .eq span:nth-child(4){animation-delay:.45s}
-@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(.94)}}
 
 /* fecha + mensaje */
 .date-line{text-align:center;font-family:var(--caps);letter-spacing:.28em;text-transform:uppercase;font-size:15px;color:var(--cream)}
@@ -458,11 +450,9 @@ body.premium .reveal, body.premium .cover{transition:none}
         <svg id="playIcon"><use href="#ic-play"/></svg>
       </button>
       <div class="music__meta">
-        <div class="music__label">Reproduce mi canción favorita</div>
-        <div class="music__song" id="songName" translate="no">Superestrella — Aitana</div>
+        <p class="music__line">Reproduce mi canción favorita — <span class="music__song" id="songName" translate="no">Superestrella, Aitana</span></p>
         <div class="music__bar"><div class="music__prog" id="prog"></div></div>
       </div>
-      <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <audio id="audio" src="assets/superestrella.mp3" preload="metadata"></audio>
     </div>
 
@@ -503,7 +493,7 @@ body.premium .reveal, body.premium .cover{transition:none}
       <p class="event__time">4:00&nbsp;p.m.</p>
       <div class="vdiv" aria-hidden="true"><span class="ln"></span><span class="gem"></span><span class="ln rev"></span></div>
       <p class="event__place">Iglesia San Salvador</p>
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Iglesia+San+Salvador" target="_blank" rel="noopener">
+      <a class="btn" href="https://maps.app.goo.gl/b8jt8KsqfXBpPUV17?g_st=aw" target="_blank" rel="noopener">
         <svg><use href="#ic-pin"/></svg> Ver mapa
       </a>
     </section>
